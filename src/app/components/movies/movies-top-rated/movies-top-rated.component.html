@@ -1,0 +1,21 @@
+<h1>Movies Top Rated: </h1>
+
+<div fxLayout="row wrap" fxLayoutGap="20px">
+  <div style="padding : 10px;" *ngFor="let movie of moviesTopRated">
+      <mat-card class="actor-card">
+        <div *ngIf = 'movie.poster_path !== null; then trueCase else falseCase'></div>
+        <ng-template #trueCase>
+          <mat-card-content>
+            <img mat-card-image src="https://image.tmdb.org/t/p/w185/{{movie.poster_path}}" >
+          </mat-card-content>
+        </ng-template>
+        <ng-template #falseCase>
+          <mat-card-content>
+            <img mat-card-image src="http://quickdrama.com/wp-content/themes/chillnflix_theme/images/noimg.png" >
+          </mat-card-content>
+        </ng-template>
+        <mat-card-title>{{movie.title}}</mat-card-title>
+        <mat-card-subtitle>{{movie.vote_average}}</mat-card-subtitle>
+      </mat-card>
+  </div> 
+</div> 

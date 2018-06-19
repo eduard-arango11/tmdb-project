@@ -1,3 +1,12 @@
-<p>
-  search works!
-</p>
+<div class="example-form">
+  <div fxLayout="row">
+    <div>
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Search something" [(ngModel)]="searchedTerm">
+      </mat-form-field>
+    </div>
+    <div>
+      <button mat-raised-button (click)="search()">Search</button>
+    </div>
+  </div>
+</div>

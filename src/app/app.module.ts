@@ -11,6 +11,7 @@ import {MatButtonModule} from '@angular/material';
 import {MatCardModule} from '@angular/material/card';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatInputModule} from '@angular/material/input';
+import {MatGridListModule} from '@angular/material/grid-list';
 
 // Components imports
 import { AppRoutingModule } from './app-routing.module';
@@ -18,13 +19,15 @@ import { AppComponent } from './app.component';
 import { MovieDetailComponent } from './components/movies/movie-detail/movie-detail.component';
 import { SearchComponent } from './components/search/search.component';
 import { HomeComponent } from './components/home/home.component';
+import { MoviesTopRatedComponent } from './components/movies/movies-top-rated/movies-top-rated.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MovieDetailComponent,
     SearchComponent,
-    HomeComponent
+    HomeComponent,
+    MoviesTopRatedComponent
   ],
   imports: [
     BrowserModule,
@@ -36,10 +39,11 @@ import { HomeComponent } from './components/home/home.component';
     MatButtonModule,
     MatCardModule,
     MatTabsModule,
-    MatInputModule
+    MatInputModule,
+    MatGridListModule
   ],
   providers: [],
   bootstrap: [AppComponent],
-  exports: [MovieDetailComponent, SearchComponent, HomeComponent]
+  exports: [MovieDetailComponent, SearchComponent, HomeComponent, MoviesTopRatedComponent]
 })
 export class AppModule { }
