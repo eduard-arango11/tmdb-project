@@ -1,2 +1,14 @@
-/* You can add global styles to this file, and also import other style files */
-@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+@import '~@angular/material/theming';
+@import '~@covalent/core/theming/all-theme';
+
+@include mat-core(); // $typography is an **optional** argument for the mat-core
+
+$primary: mat-palette($mat-orange, 800, 100, 900);
+$accent:  mat-palette($mat-light-blue, 600, 100, 900);
+
+$warn:    mat-palette($mat-red, 600, 100, 900);
+
+$theme: mat-light-theme($primary, $accent, $warn);
+
+@include angular-material-theme($theme);
+@include covalent-theme($theme); // $typography is an **optional** argument for the covalent-theme

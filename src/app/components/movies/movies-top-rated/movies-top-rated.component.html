@@ -2,7 +2,7 @@
 
 <div fxLayout="row wrap" fxLayoutGap="20px">
   <div style="padding : 10px;" *ngFor="let movie of moviesTopRated">
-      <mat-card class="actor-card">
+      <mat-card class="movie-card">
         <div *ngIf = 'movie.poster_path !== null; then trueCase else falseCase'></div>
         <ng-template #trueCase>
           <mat-card-content>
