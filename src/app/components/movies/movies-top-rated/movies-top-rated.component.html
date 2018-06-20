@@ -2,11 +2,11 @@
 
 <div fxLayout="row wrap" fxLayoutGap="20px">
   <div style="padding : 10px;" *ngFor="let movie of moviesTopRated">
-      <mat-card class="movie-card">
+      <mat-card [routerLink]="['/movie/detail', movie.id]" class="movie-card">
         <div *ngIf = 'movie.poster_path !== null; then trueCase else falseCase'></div>
         <ng-template #trueCase>
           <mat-card-content>
-            <img mat-card-image src="https://image.tmdb.org/t/p/w185/{{movie.poster_path}}" >
+            <img mat-card-image src="https://image.tmdb.org/t/p/w300/{{movie.poster_path}}" >
           </mat-card-content>
         </ng-template>
         <ng-template #falseCase>

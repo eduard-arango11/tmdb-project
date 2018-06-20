@@ -1,4 +1,14 @@
 <!--app-search></app-search-->
-<td-layout-nav toolbarTitle="Movies" navigationRoute="/">
-    <app-movies-top-rated></app-movies-top-rated>
-</td-layout-nav>
+
+<td-layout>
+    <td-layout-nav navigationRoute="/">
+        <div td-toolbar-content layout="row" layout-align="start center" flex>
+            <button mat-icon-button td-menu-button tdLayoutToggle>
+                <mat-icon>menu</mat-icon>
+            </button>
+            <mat-icon class="mat-icon-logo cursor-pointer" >undo</mat-icon>
+            <mat-icon [routerLink]="['']" class="mat-icon-logo cursor-pointer">home</mat-icon>
+        </div>
+        <app-movies-top-rated></app-movies-top-rated>
+    </td-layout-nav>
+</td-layout>
