@@ -32,7 +32,114 @@ export class MovieService {
         )
       );
   }
+  
+  getPopularMovies () {
+    return this.http
+      .get(this.baseUrl + "popular" +this.apiKey)
+      .pipe(
+        map(
+          (response: any) => {
+            return response.results.map((item)=>{
+              return {
+                id: item.id,
+                title: item.title,
+                poster_path: item.poster_path,
+                vote_count: item.vote_count,
+                vote_average: item.vote_average,
+                popularity: item.popularity
+              }
+            });
+          }
+        )
+      );
+  }
 
-  getMovieDetail(idMovie){
+  getNowPlayingMovies () {
+    return this.http
+      .get(this.baseUrl + "now_playing" +this.apiKey)
+      .pipe(
+        map(
+          (response: any) => {
+            return response.results.map((item)=>{
+              return {
+                id: item.id,
+                title: item.title,
+                poster_path: item.poster_path,
+                vote_count: item.vote_count,
+                vote_average: item.vote_average,
+                popularity: item.popularity
+              }
+            });
+          }
+        )
+      );
+  }
+
+  getUpcomingMovies () {
+    return this.http
+      .get(this.baseUrl + "upcoming" +this.apiKey)
+      .pipe(
+        map(
+          (response: any) => {
+            return response.results.map((item)=>{
+              return {
+                id: item.id,
+                title: item.title,
+                poster_path: item.poster_path,
+                vote_count: item.vote_count,
+                vote_average: item.vote_average,
+                popularity: item.popularity
+              }
+            });
+          }
+        )
+      );
+  }
+
+  getSimilarMovies (idMovie:number) {
+    return this.http
+      .get(this.baseUrl + idMovie +"/similar" +this.apiKey)
+      .pipe(
+        map(
+          (response: any) => {
+            return response.results.map((item)=>{
+              return {
+                id: item.id,
+                title: item.title,
+                poster_path: item.poster_path,
+                vote_count: item.vote_count,
+                vote_average: item.vote_average,
+                popularity: item.popularity
+              }
+            });
+          }
+        )
+      );
+  }
+
+  getMovieDetail(idMovie:number){
+    return this.http
+      .get(this.baseUrl + idMovie +this.apiKey)
+      .pipe(
+        map(
+          (response: any) => {
+              return {
+                id: response.id,
+                title: response.title,
+                poster_path: response.poster_path,
+                vote_count: response.vote_count,
+                vote_average: response.vote_average,
+                popularity: response.popularity,
+                release_date: response.release_date,
+                overview: response.overview,
+                genres: response.genres,
+                production_companies: response.production_companies,
+                production_countries: response.production_countries,
+                spoken_languages: response.spoken_languages,
+                status: response.status
+              }
+          }
+        )
+      );
   }
 }

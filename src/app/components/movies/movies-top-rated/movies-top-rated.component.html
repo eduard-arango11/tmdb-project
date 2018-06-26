@@ -5,14 +5,10 @@
       <mat-card [routerLink]="['/movie/detail', movie.id]" class="movie-card">
         <div *ngIf = 'movie.poster_path !== null; then trueCase else falseCase'></div>
         <ng-template #trueCase>
-          <mat-card-content>
             <img mat-card-image src="https://image.tmdb.org/t/p/w300/{{movie.poster_path}}" >
-          </mat-card-content>
         </ng-template>
         <ng-template #falseCase>
-          <mat-card-content>
             <img mat-card-image src="http://quickdrama.com/wp-content/themes/chillnflix_theme/images/noimg.png" >
-          </mat-card-content>
         </ng-template>
         <mat-card-title>{{movie.title}}</mat-card-title>
         <mat-card-subtitle>{{movie.vote_average}}</mat-card-subtitle>

@@ -6,8 +6,8 @@ import { FormsModule }   from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 // Teradata Covalent imports
-import { CovalentLayoutModule } from '@covalent/core/layout';
-import { CovalentStepsModule  } from '@covalent/core/steps';
+//import { CovalentLayoutModule } from '@covalent/core/layout';
+//import { CovalentStepsModule  } from '@covalent/core/steps';
 
 // Material & flex imports
 import {FlexLayoutModule} from '@angular/flex-layout';
@@ -19,6 +19,8 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import {MatIconModule} from '@angular/material/icon';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatChipsModule} from '@angular/material/chips';
 
 // Components imports
 import { AppRoutingModule } from './app-routing.module';
@@ -42,8 +44,8 @@ import { MoviesTopRatedComponent } from './components/movies/movies-top-rated/mo
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    CovalentLayoutModule,
-    CovalentStepsModule,
+    //CovalentLayoutModule,
+    //CovalentStepsModule,
     FlexLayoutModule,
     MatButtonModule,
     MatCardModule,
@@ -52,7 +54,9 @@ import { MoviesTopRatedComponent } from './components/movies/movies-top-rated/mo
     MatGridListModule,
     MatIconModule,
     MatSidenavModule,
-    MatListModule
+    MatListModule,
+    MatToolbarModule,
+    MatChipsModule
   ],
   providers: [],
   bootstrap: [AppComponent],

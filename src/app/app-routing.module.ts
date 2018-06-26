@@ -12,7 +12,7 @@ const routes: Routes = [
     component: HomeComponent
   },
   {
-    path: '/movie/detail/:idMovie',
+    path: 'movie/detail/:id',
     component: MovieDetailComponent
   }
 ];
