@@ -1,0 +1,18 @@
+.poster{
+    //padding: 20px;
+    //margin: 20px;
+    margin: 15px;
+    //width: 300px;
+    //height: 400px;
+    //background-image: url("https://image.tmdb.org/t/p/w300/c9XxwwhPHdaImA2f1WEfEsbhaFB.jpg");
+    display: block;
+    width: 300px;
+    height: 450px;
+}
+
+.movies-grid{
+    display: flex;
+    flex-wrap: wrap;
+    flex-basis: 0;
+    //justify-content: space-around;
+}

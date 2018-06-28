@@ -1,0 +1,8 @@
+<!--pre>
+  {{moviesNowPlaying | json}}
+</pre-->
+<h1>Movies now playing</h1>
+<div class="movies-grid">
+  <div *ngFor="let movie of moviesNowPlaying" class="poster" [ngStyle]="{'background-image': 'url('+ base_url + movie.poster_path +')'}" [routerLink]="['/movie/detail', movie.id]">
+  </div>
+</div>

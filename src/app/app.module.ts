@@ -29,6 +29,9 @@ import { MovieDetailComponent } from './components/movies/movie-detail/movie-det
 import { SearchComponent } from './components/search/search.component';
 import { HomeComponent } from './components/home/home.component';
 import { MoviesTopRatedComponent } from './components/movies/movies-top-rated/movies-top-rated.component';
+import { MoviesPopularComponent } from './components/movies/movies-popular/movies-popular.component';
+import { MoviesNowPlayingComponent } from './components/movies/movies-now-playing/movies-now-playing.component';
+import { MoviesUpcomingComponent } from './components/movies/movies-upcoming/movies-upcoming.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +39,10 @@ import { MoviesTopRatedComponent } from './components/movies/movies-top-rated/mo
     MovieDetailComponent,
     SearchComponent,
     HomeComponent,
-    MoviesTopRatedComponent
+    MoviesTopRatedComponent,
+    MoviesPopularComponent,
+    MoviesNowPlayingComponent,
+    MoviesUpcomingComponent
   ],
   imports: [
     BrowserModule,
@@ -60,6 +66,6 @@ import { MoviesTopRatedComponent } from './components/movies/movies-top-rated/mo
   ],
   providers: [],
   bootstrap: [AppComponent],
-  exports: [MovieDetailComponent, SearchComponent, HomeComponent, MoviesTopRatedComponent]
+  exports: [MovieDetailComponent, SearchComponent, HomeComponent, MoviesTopRatedComponent, MoviesPopularComponent, MoviesNowPlayingComponent, MoviesUpcomingComponent]
 })
 export class AppModule { }
