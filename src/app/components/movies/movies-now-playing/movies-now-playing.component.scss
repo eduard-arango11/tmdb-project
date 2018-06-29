@@ -1,18 +1,32 @@
+img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 10px;
+}
+
 .poster{
-    //padding: 20px;
-    //margin: 20px;
     margin: 15px;
-    //width: 300px;
-    //height: 400px;
-    //background-image: url("https://image.tmdb.org/t/p/w300/c9XxwwhPHdaImA2f1WEfEsbhaFB.jpg");
     display: block;
     width: 300px;
     height: 450px;
+    background-color: black;
+    border-radius: 10px;
+}
+
+.movie-title{
+    color: white;
+    margin: 20px;
+}
+.movie-summary{
+    color: white;
+    margin: 20px;
+    text-align: justify;
 }
 
 .movies-grid{
     display: flex;
     flex-wrap: wrap;
     flex-basis: 0;
-    //justify-content: space-around;
 }
+

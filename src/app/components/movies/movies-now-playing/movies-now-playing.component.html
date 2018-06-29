@@ -1,8 +1,13 @@
-<!--pre>
-  {{moviesNowPlaying | json}}
-</pre-->
-<h1>Movies now playing</h1>
+<h1>Movies in theatres:</h1>
 <div class="movies-grid">
-  <div *ngFor="let movie of moviesNowPlaying" class="poster" [ngStyle]="{'background-image': 'url('+ base_url + movie.poster_path +')'}" [routerLink]="['/movie/detail', movie.id]">
+  <div *ngFor="let movie of moviesNowPlaying, let i=index"
+  class="poster"
+  [routerLink]="['/movie/detail', movie.id]"
+  (mouseover)="eventMouse(i)"
+  (mouseout)="eventMouse(i)"
+  >
+    <img [hidden]='isTheMouseOverPosterArray[i]' src="https://image.tmdb.org/t/p/w300/{{movie.poster_path}}" >
+    <h2 class="movie-title" [hidden]='!isTheMouseOverPosterArray[i]'> {{movie.title}} </h2>
+    <p class="movie-summary" [hidden]='!isTheMouseOverPosterArray[i]'>{{ (movie.overview.length > 300) ? (movie.overview | slice:0:300) + '....' : (movie.overview) }}</p>
   </div>
 </div>

@@ -25,7 +25,8 @@ export class MovieService {
                 poster_path: item.poster_path,
                 vote_count: item.vote_count,
                 vote_average: item.vote_average,
-                popularity: item.popularity
+                popularity: item.popularity,
+                overview: item.overview
               }
             });
           }
@@ -46,7 +47,8 @@ export class MovieService {
                 poster_path: item.poster_path,
                 vote_count: item.vote_count,
                 vote_average: item.vote_average,
-                popularity: item.popularity
+                popularity: item.popularity,
+                overview: item.overview
               }
             });
           }
@@ -67,7 +69,8 @@ export class MovieService {
                 poster_path: item.poster_path,
                 vote_count: item.vote_count,
                 vote_average: item.vote_average,
-                popularity: item.popularity
+                popularity: item.popularity,
+                overview: item.overview
               }
             });
           }
@@ -88,7 +91,8 @@ export class MovieService {
                 poster_path: item.poster_path,
                 vote_count: item.vote_count,
                 vote_average: item.vote_average,
-                popularity: item.popularity
+                popularity: item.popularity,
+                overview: item.overview
               }
             });
           }
