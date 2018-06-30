@@ -78,11 +78,19 @@
       </div>
     </div>
     <div class="extra-tabs">
-        <mat-tab-group style="border: solid green;">
+        <mat-tab-group>
           <mat-tab label="Images"> 
             <h2>Backdrops: </h2>
             <div class="images-tab" >
-                <div *ngFor="let image of movieBackdropsImages" class="image-in-tab"></div>
+                <div *ngFor="let image of movieBackdropsImages" class="image-in-tab">
+                  <img src="https://image.tmdb.org/t/p/w300/{{image.file_path}}">
+                </div>
+            </div>
+            <h2>Posters: </h2>
+            <div class="images-tab" >
+                <div *ngFor="let image of moviePostersImages" class="image-in-tab">
+                  <img src="https://image.tmdb.org/t/p/w185/{{image.file_path}}">
+                </div>
             </div>
           </mat-tab>
           <mat-tab label="Videos">

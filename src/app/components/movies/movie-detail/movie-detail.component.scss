@@ -1,4 +1,4 @@
-.movie-detail-card{
+/*.movie-detail-card{
     max-width: 700px;
 }
 
@@ -13,8 +13,12 @@
 .stats{
     margin-left: 200px;
     margin-bottom: 50px;
-}
+}*/
 //desde aqui!!
+
+.movie-title{
+    font-size: 200%;
+}
 
 .main{
     display: flex;
@@ -35,9 +39,9 @@ img {
 }
 
 .poster{
-    width: 300px;
-    height: 450px;
-    border-radius: 10px;
+    //width: 300px;
+    //height: 450px;
+    //border-radius: 10px;
     //border: solid green;
 }
 
@@ -48,8 +52,9 @@ img {
 
 .extra-tabs{
     width: 100%;
-    border: solid blue;
+    //border: solid blue;
     display: flex;
+    flex-direction: column;
     justify-content:center;
 }
 
@@ -61,8 +66,9 @@ img {
 }
 
 .image-in-tab{
-    width: 200px;
-    height: 200px;
-    border: solid orange;
+    margin: 10px;
+    //width: 300px;
+    //height: 150px;
+    //border: solid orange;
 }
 

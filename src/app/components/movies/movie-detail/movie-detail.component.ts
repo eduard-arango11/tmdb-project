@@ -11,6 +11,7 @@ export class MovieDetailComponent implements OnInit {
 
   public movie;
   public movieBackdropsImages;
+  public moviePostersImages;
   private sub: any;
 
   constructor(
@@ -29,10 +30,17 @@ export class MovieDetailComponent implements OnInit {
           }
         );
 
-        this.movieService.getMovieImages(id).subscribe(
+        this.movieService.getMovieImagesBackdrops(id).subscribe(
           (data) => {
             this.movieBackdropsImages= data;
             console.log(this.movieBackdropsImages);
+          }
+        );
+        
+        this.movieService.getMovieImagesPosters(id).subscribe(
+          (data) => {
+            this.moviePostersImages= data;
+            console.log(this.moviePostersImages);
           }
         );
       }

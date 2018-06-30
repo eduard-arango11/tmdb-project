@@ -147,13 +147,33 @@ export class MovieService {
       );
   }
 
-  getMovieImages(idMovie:number){
+  getMovieImagesBackdrops(idMovie:number){
     return this.http
       .get(this.baseUrl + idMovie + "/images" + this.apiKey)
       .pipe(
         map(
           (response: any) => {
             return response.backdrops.map((item)=>{
+              return {
+                file_path: item.file_path,
+                height: item.height,
+                width: item.width,
+                vote_count: item.vote_count,
+                vote_average: item.vote_average
+              }
+            });
+          }
+        )
+      );
+  }
+
+  getMovieImagesPosters(idMovie:number){
+    return this.http
+      .get(this.baseUrl + idMovie + "/images" + this.apiKey)
+      .pipe(
+        map(
+          (response: any) => {
+            return response.posters.map((item)=>{
               return {
                 file_path: item.file_path,
                 height: item.height,
