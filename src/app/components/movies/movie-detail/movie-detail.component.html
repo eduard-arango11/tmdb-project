@@ -1,4 +1,4 @@
-<div *ngIf="movie" fxLayout="row wrap" fxLayoutGap="20px">
+<!--div *ngIf="movie" fxLayout="row wrap" fxLayoutGap="20px">
   <div style="padding : 10px;" >
     <div class="movie-poster">
         <img src="https://image.tmdb.org/t/p/w400/{{movie.poster_path}}" >
@@ -16,7 +16,6 @@
               </mat-chip> 
             </mat-chip-list>
           </mat-card-subtitle>
-          <!--app-stats class="stats" [movieStatsData]="{ popularity: movie.popularity, vote_average: movie.vote_average, vote_count: movie.vote_count }"></app-stats-->
         </mat-card-header>
         <mat-card-content>
           
@@ -39,4 +38,74 @@
         </mat-card-content>
       </mat-card>
   </div>
+</div-->
+<div *ngIf="movie">
+  <mat-card class="main">
+    <div class="detail-content">
+      <div class="poster">
+        <img src="https://image.tmdb.org/t/p/w300/{{movie.poster_path}}">
+      </div>
+      <div class="information">
+        <mat-card-header>
+          <mat-card-title class="movie-title"> {{movie.title}} </mat-card-title>
+          <mat-card-subtitle>Release date: {{ movie.release_date}}</mat-card-subtitle>
+          <mat-card-subtitle>
+            <mat-chip-list>
+              <mat-chip *ngFor="let genre of movie.genres" color="accent" selected="true">
+                {{genre.name}}
+              </mat-chip> 
+            </mat-chip-list>
+          </mat-card-subtitle>
+        </mat-card-header>
+        <mat-divider [inset]="true"></mat-divider>
+        <h2>Overview</h2>
+        <p align="justify">
+          {{movie.overview}}
+        </p>
+    
+        <mat-tab-group>
+          <mat-tab label="Production Companies"> 
+            <mat-list role="list">
+              <mat-list-item role="listitem" *ngFor="let companie of movie.production_companies">{{companie.name}}</mat-list-item>
+            </mat-list>
+          </mat-tab>
+          <mat-tab label="Production Countries">
+            <mat-list role="list">
+              <mat-list-item role="listitem" *ngFor="let country of movie.production_countries">{{country.name}} </mat-list-item>
+            </mat-list>
+          </mat-tab>
+        </mat-tab-group>
+      </div>
+    </div>
+    <div class="extra-tabs">
+        <mat-tab-group style="border: solid green;">
+          <mat-tab label="Images"> 
+            <h2>Backdrops: </h2>
+            <div class="images-tab" >
+                <div *ngFor="let image of movieBackdropsImages" class="image-in-tab"></div>
+            </div>
+          </mat-tab>
+          <mat-tab label="Videos">
+            <mat-list role="list">
+              <mat-list-item role="listitem" *ngFor="let country of movie.production_countries">{{country.name}} </mat-list-item>
+            </mat-list>
+          </mat-tab>
+          <mat-tab label="Cast">
+            <mat-list role="list">
+              <mat-list-item role="listitem" *ngFor="let country of movie.production_countries">{{country.name}} </mat-list-item>
+            </mat-list>
+          </mat-tab>
+          <mat-tab label="Crew">
+            <mat-list role="list">
+              <mat-list-item role="listitem" *ngFor="let country of movie.production_countries">{{country.name}} </mat-list-item>
+            </mat-list>
+          </mat-tab>
+          <mat-tab label="Similar movies">
+            <mat-list role="list">
+              <mat-list-item role="listitem" *ngFor="let country of movie.production_countries">{{country.name}} </mat-list-item>
+            </mat-list>
+          </mat-tab>
+        </mat-tab-group>
+      </div>
+  </mat-card>
 </div>

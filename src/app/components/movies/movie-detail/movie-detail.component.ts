@@ -10,6 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 export class MovieDetailComponent implements OnInit {
 
   public movie;
+  public movieBackdropsImages;
   private sub: any;
 
   constructor(
@@ -25,6 +26,13 @@ export class MovieDetailComponent implements OnInit {
           (data) => {
             this.movie= data;
             console.log(this.movie);
+          }
+        );
+
+        this.movieService.getMovieImages(id).subscribe(
+          (data) => {
+            this.movieBackdropsImages= data;
+            console.log(this.movieBackdropsImages);
           }
         );
       }

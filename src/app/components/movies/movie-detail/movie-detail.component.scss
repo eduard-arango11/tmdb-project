@@ -14,3 +14,55 @@
     margin-left: 200px;
     margin-bottom: 50px;
 }
+//desde aqui!!
+
+.main{
+    display: flex;
+    flex-basis: 0;
+    flex-direction: column;
+}
+
+.detail-content{
+    display: flex;
+    //justify-content: space-around;
+    //flex-basis: 0;
+    //align-items: row;
+    flex-direction: row;
+}
+
+img {
+    border-radius: 10px;
+}
+
+.poster{
+    width: 300px;
+    height: 450px;
+    border-radius: 10px;
+    //border: solid green;
+}
+
+.information{
+    margin-left: 50px;
+    //border: solid green;
+}
+
+.extra-tabs{
+    width: 100%;
+    border: solid blue;
+    display: flex;
+    justify-content:center;
+}
+
+.images-tab{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.image-in-tab{
+    width: 200px;
+    height: 200px;
+    border: solid orange;
+}
+
