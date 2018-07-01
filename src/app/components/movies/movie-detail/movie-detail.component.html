@@ -64,7 +64,7 @@
         </p>
     
         <mat-tab-group>
-          <mat-tab label="Production Companies"> 
+          <mat-tab label="Production Companies">
             <mat-list role="list">
               <mat-list-item role="listitem" *ngFor="let companie of movie.production_companies">{{companie.name}}</mat-list-item>
             </mat-list>
@@ -79,29 +79,47 @@
     </div>
     <div class="extra-tabs">
         <mat-tab-group>
-          <mat-tab label="Images"> 
-            <h2>Backdrops: </h2>
+          <mat-tab label="Images">
+            <mat-accordion>
+              <mat-expansion-panel [expanded]="true">
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                      Backdrops
+                    </mat-panel-title>
+                  </mat-expansion-panel-header>
+                  <div class="images-tab" >
+                      <div *ngFor="let image of movieBackdropsImages" class="image-in-tab">
+                        <img src="https://image.tmdb.org/t/p/w300/{{image.file_path}}">
+                      </div>
+                  </div>
+                </mat-expansion-panel>
+                <mat-expansion-panel>
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                      Posters
+                    </mat-panel-title>
+                  </mat-expansion-panel-header>
+                  <div class="images-tab" >
+                      <div *ngFor="let image of moviePostersImages" class="image-in-tab">
+                        <img src="https://image.tmdb.org/t/p/w185/{{image.file_path}}">
+                      </div>
+                  </div>
+                </mat-expansion-panel>
+            </mat-accordion>
+          </mat-tab>
+          <mat-tab label="Videos">
             <div class="images-tab" >
-                <div *ngFor="let image of movieBackdropsImages" class="image-in-tab">
-                  <img src="https://image.tmdb.org/t/p/w300/{{image.file_path}}">
+                <div *ngFor="let video of movieVideos" class="image-in-tab">
+                    <iframe [src]="getSafeTrailer(video.key)" width="500" height="350"></iframe>
                 </div>
             </div>
-            <h2>Posters: </h2>
+          </mat-tab>
+          <mat-tab label="Cast">
             <div class="images-tab" >
                 <div *ngFor="let image of moviePostersImages" class="image-in-tab">
                   <img src="https://image.tmdb.org/t/p/w185/{{image.file_path}}">
                 </div>
             </div>
-          </mat-tab>
-          <mat-tab label="Videos">
-            <mat-list role="list">
-              <mat-list-item role="listitem" *ngFor="let country of movie.production_countries">{{country.name}} </mat-list-item>
-            </mat-list>
-          </mat-tab>
-          <mat-tab label="Cast">
-            <mat-list role="list">
-              <mat-list-item role="listitem" *ngFor="let country of movie.production_countries">{{country.name}} </mat-list-item>
-            </mat-list>
           </mat-tab>
           <mat-tab label="Crew">
             <mat-list role="list">

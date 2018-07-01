@@ -1,4 +1,4 @@
-<h1>Movies in theatres:</h1>
+<h1>{{title}}</h1>
 <div class="movies-grid">
   <div *ngFor="let movie of moviesNowPlaying, let i=index"
   class="poster"
@@ -7,7 +7,9 @@
   (mouseout)="eventMouse(i)"
   >
     <img [hidden]='isTheMouseOverPosterArray[i]' src="https://image.tmdb.org/t/p/w300/{{movie.poster_path}}" >
-    <h2 class="movie-title" [hidden]='!isTheMouseOverPosterArray[i]'> {{movie.title}} </h2>
-    <p class="movie-summary" [hidden]='!isTheMouseOverPosterArray[i]'>{{ (movie.overview.length > 300) ? (movie.overview | slice:0:300) + '....' : (movie.overview) }}</p>
+    <div [hidden]='!isTheMouseOverPosterArray[i]'>
+      <h2 class="movie-title"> {{movie.title}} ({{movie.release_date | date:'y'}})</h2>
+      <p class="movie-summary">{{ (movie.overview.length > 300) ? (movie.overview | slice:0:300) + '...' : (movie.overview) }}</p>
+    </div>
   </div>
 </div>

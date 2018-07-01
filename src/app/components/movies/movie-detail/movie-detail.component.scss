@@ -27,15 +27,22 @@
 }
 
 .detail-content{
+    margin-bottom: 15px;
     display: flex;
     //justify-content: space-around;
     //flex-basis: 0;
     //align-items: row;
     flex-direction: row;
-}
-
-img {
-    border-radius: 10px;
+    mat-list{
+        display: flex; 
+        flex-direction: column; 
+        flex-wrap: wrap;
+        max-height: 200px; 
+        //border: solid green;
+    }
+    img {
+        border-radius: 10px;
+    }
 }
 
 .poster{
@@ -71,4 +78,3 @@ img {
     //height: 150px;
     //border: solid orange;
 }
-

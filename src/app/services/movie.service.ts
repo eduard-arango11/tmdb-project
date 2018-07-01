@@ -26,7 +26,8 @@ export class MovieService {
                 vote_count: item.vote_count,
                 vote_average: item.vote_average,
                 popularity: item.popularity,
-                overview: item.overview
+                overview: item.overview,
+                release_date: item.release_date
               }
             });
           }
@@ -48,7 +49,8 @@ export class MovieService {
                 vote_count: item.vote_count,
                 vote_average: item.vote_average,
                 popularity: item.popularity,
-                overview: item.overview
+                overview: item.overview,
+                release_date: item.release_date
               }
             });
           }
@@ -70,7 +72,8 @@ export class MovieService {
                 vote_count: item.vote_count,
                 vote_average: item.vote_average,
                 popularity: item.popularity,
-                overview: item.overview
+                overview: item.overview,
+                release_date: item.release_date
               }
             });
           }
@@ -92,7 +95,8 @@ export class MovieService {
                 vote_count: item.vote_count,
                 vote_average: item.vote_average,
                 popularity: item.popularity,
-                overview: item.overview
+                overview: item.overview,
+                release_date: item.release_date
               }
             });
           }
@@ -140,7 +144,9 @@ export class MovieService {
                 production_companies: response.production_companies,
                 production_countries: response.production_countries,
                 spoken_languages: response.spoken_languages,
-                status: response.status
+                status: response.status,
+                budget: response.budget,
+                revenue: response.revenue
               }
           }
         )
@@ -180,6 +186,46 @@ export class MovieService {
                 width: item.width,
                 vote_count: item.vote_count,
                 vote_average: item.vote_average
+              }
+            });
+          }
+        )
+      );
+  }
+
+  getMovieVideos(idMovie:number) {
+    return this.http
+      .get(this.baseUrl + idMovie +"/videos" +this.apiKey)
+      .pipe(
+        map(
+          (response: any) => {
+            return response.results.map((item)=>{
+              return {
+                name: item.name,
+                site: item.site,
+                key: item.key,
+                type: item.type,
+                size: item.size
+              }
+            });
+          }
+        )
+      );
+  }
+
+  getMovieCast(idMovie:number) {
+    return this.http
+      .get(this.baseUrl + idMovie +"/credits" +this.apiKey)
+      .pipe(
+        map(
+          (response: any) => {
+            return response.cast.map((item)=>{
+              return {
+                id: item.id,
+                character: item.character,
+                gender: item.gender,
+                name: item.name,
+                profile_path: item.profile_path
               }
             });
           }

@@ -1,5 +1,16 @@
 <!--app-movies-top-rated></app-movies-top-rated-->
-<app-movies-now-playing></app-movies-now-playing>
+<!--form class="example-form">
+    <mat-form-field class="example-full-width">
+        <input type="text" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
+        <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let option of options" [value]="option">
+            {{option}}
+        </mat-option>
+        </mat-autocomplete>
+    </mat-form-field>
+</form-->
+<app-movies-list [listType]="'popular'"></app-movies-list>
+<app-movies-list [listType]="'now_playing'"></app-movies-list>
 <!--app-search></app-search-->
 
 <!--td-layout>

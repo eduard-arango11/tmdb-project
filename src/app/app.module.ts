@@ -2,7 +2,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import { FormsModule }   from '@angular/forms';
+import { FormsModule, ReactiveFormsModule}   from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 // Teradata Covalent imports
@@ -21,6 +21,8 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatChipsModule} from '@angular/material/chips';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 // Components imports
 import { AppRoutingModule } from './app-routing.module';
@@ -28,10 +30,9 @@ import { AppComponent } from './app.component';
 import { MovieDetailComponent } from './components/movies/movie-detail/movie-detail.component';
 import { SearchComponent } from './components/search/search.component';
 import { HomeComponent } from './components/home/home.component';
-import { MoviesTopRatedComponent } from './components/movies/movies-top-rated/movies-top-rated.component';
-import { MoviesPopularComponent } from './components/movies/movies-popular/movies-popular.component';
-import { MoviesNowPlayingComponent } from './components/movies/movies-now-playing/movies-now-playing.component';
-import { MoviesUpcomingComponent } from './components/movies/movies-upcoming/movies-upcoming.component';
+import { MoviesListComponent } from './components/movies/movies-list/movies-list.component';
+
+
 
 @NgModule({
   declarations: [
@@ -39,16 +40,14 @@ import { MoviesUpcomingComponent } from './components/movies/movies-upcoming/mov
     MovieDetailComponent,
     SearchComponent,
     HomeComponent,
-    MoviesTopRatedComponent,
-    MoviesPopularComponent,
-    MoviesNowPlayingComponent,
-    MoviesUpcomingComponent
+    MoviesListComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     //CovalentLayoutModule,
     //CovalentStepsModule,
@@ -62,10 +61,12 @@ import { MoviesUpcomingComponent } from './components/movies/movies-upcoming/mov
     MatSidenavModule,
     MatListModule,
     MatToolbarModule,
-    MatChipsModule
+    MatChipsModule,
+    MatAutocompleteModule,
+    MatExpansionModule
   ],
   providers: [],
   bootstrap: [AppComponent],
-  exports: [MovieDetailComponent, SearchComponent, HomeComponent, MoviesTopRatedComponent, MoviesPopularComponent, MoviesNowPlayingComponent, MoviesUpcomingComponent]
+  exports: [MovieDetailComponent, SearchComponent, HomeComponent,MoviesListComponent]
 })
 export class AppModule { }

@@ -1,10 +1,20 @@
 <div class="example-form">
-  <div fxLayout="row">
-    <div>
+  <div style="display: flex;">
+    <!--div>
       <mat-form-field class="example-full-width">
         <input matInput placeholder="Search something" [(ngModel)]="searchedTerm">
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let option of options" [value]="option">
+            {{option}}
+          </mat-option>
+        </mat-autocomplete>
       </mat-form-field>
-    </div>
+    </div-->
+    <form class="example-form">
+      <mat-form-field class="example-full-width">
+        <input type="text" placeholder="Pick one" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
+      </mat-form-field>
+    </form>
     <div>
       <button mat-raised-button (click)="search()">Search</button>
     </div>
