@@ -232,4 +232,25 @@ export class MovieService {
         )
       );
   }
+
+  getMovieCrew(idMovie:number) {
+    return this.http
+      .get(this.baseUrl + idMovie +"/credits" +this.apiKey)
+      .pipe(
+        map(
+          (response: any) => {
+            return response.crew.map((item)=>{
+              return {
+                id: item.id,  
+                department: item.department,
+                gender: item.gender,
+                name: item.name,
+                profile_path: item.profile_path,
+                job: item.job
+              }
+            });
+          }
+        )
+      );
+  }
 }

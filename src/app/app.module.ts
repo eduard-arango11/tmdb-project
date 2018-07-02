@@ -23,6 +23,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatExpansionModule} from '@angular/material/expansion';
+import {MatSelectModule} from '@angular/material/select';
 
 // Components imports
 import { AppRoutingModule } from './app-routing.module';
@@ -31,6 +32,8 @@ import { MovieDetailComponent } from './components/movies/movie-detail/movie-det
 import { SearchComponent } from './components/search/search.component';
 import { HomeComponent } from './components/home/home.component';
 import { MoviesListComponent } from './components/movies/movies-list/movies-list.component';
+import { MovieDetailCastComponent } from './components/movies/movie-detail-cast/movie-detail-cast.component';
+import { MovieDetailCrewComponent } from './components/movies/movie-detail-crew/movie-detail-crew.component';
 
 
 
@@ -40,7 +43,9 @@ import { MoviesListComponent } from './components/movies/movies-list/movies-list
     MovieDetailComponent,
     SearchComponent,
     HomeComponent,
-    MoviesListComponent
+    MoviesListComponent,
+    MovieDetailCastComponent,
+    MovieDetailCrewComponent
   ],
   imports: [
     BrowserModule,
@@ -63,10 +68,11 @@ import { MoviesListComponent } from './components/movies/movies-list/movies-list
     MatToolbarModule,
     MatChipsModule,
     MatAutocompleteModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent],
-  exports: [MovieDetailComponent, SearchComponent, HomeComponent,MoviesListComponent]
+  exports: [MovieDetailComponent, SearchComponent, HomeComponent,MoviesListComponent, MovieDetailCastComponent, MovieDetailCrewComponent]
 })
 export class AppModule { }

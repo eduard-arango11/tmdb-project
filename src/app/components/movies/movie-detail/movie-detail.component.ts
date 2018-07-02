@@ -10,6 +10,7 @@ import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 })
 export class MovieDetailComponent implements OnInit {
 
+  public movieId;
   public movie;
   public movieBackdropsImages;
   public moviePostersImages;
@@ -26,6 +27,7 @@ export class MovieDetailComponent implements OnInit {
   ngOnInit() {
     this.sub = this.route.params.subscribe(
       params => {
+        this.movieId = +params['id'];
         let id:number = +params['id'];
         this.movieService.getMovieDetail(id).subscribe(
           (data) => {
@@ -58,7 +60,7 @@ export class MovieDetailComponent implements OnInit {
         this.movieService.getMovieCast(id).subscribe(
           (data) => {
             this.movieCast= data;
-            console.log(this.movieCast);
+            console.log(this.movieCast, 'MovieCast');
           }
         );
       }
