@@ -1,0 +1,16 @@
+<div class="movies-grid">
+  <mat-card *ngFor="let movie of movieRecommendations"
+  [routerLink]="['/movie/detail', movie.id]"
+  (click)="chageMovie(movie.id)">
+    <img mat-card-image src="https://image.tmdb.org/t/p/w185/{{movie.poster_path}}">
+    <mat-card-title>{{movie.title}} ({{movie.release_date | date:'y'}})</mat-card-title>
+    <mat-card-subtitle>
+      <li class="fix_icon" *ngIf="movie.vote_average">
+        <div>
+          <mat-icon>star</mat-icon>
+        </div>
+        <div>{{movie.vote_average}}</div>
+      </li>
+    </mat-card-subtitle>
+  </mat-card>
+</div>

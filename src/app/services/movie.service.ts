@@ -104,20 +104,22 @@ export class MovieService {
       );
   }
 
-  getSimilarMovies (idMovie:number) {
+  getMovieRecommendations (idMovie:number) {
     return this.http
-      .get(this.baseUrl + idMovie +"/similar" +this.apiKey)
+      .get(this.baseUrl + idMovie +"/recommendations" +this.apiKey)
       .pipe(
         map(
           (response: any) => {
             return response.results.map((item)=>{
               return {
                 id: item.id,
+                genre_ids: item.genre_ids,
                 title: item.title,
+                overview: item.overview,
                 poster_path: item.poster_path,
+                release_date: item.release_date,
                 vote_count: item.vote_count,
-                vote_average: item.vote_average,
-                popularity: item.popularity
+                vote_average: item.vote_average
               }
             });
           }

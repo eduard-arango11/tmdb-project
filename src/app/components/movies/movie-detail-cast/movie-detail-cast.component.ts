@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
+import { MovieService } from '../../../services/movie.service';
 
 @Component({
   selector: 'app-movie-detail-cast',
@@ -6,12 +7,27 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./movie-detail-cast.component.scss']
 })
 export class MovieDetailCastComponent implements OnInit {
+  
+  public movieCast;
 
-  @Input() public movieCast;
+  @Input() public movieId;
 
-  constructor() { }
+  constructor(private movieService: MovieService) { }
 
   ngOnInit() {
+    this.movieService.getMovieCast(this.movieId).subscribe(
+      (data) => {
+        this.movieCast= data;
+      }
+    );
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    this.movieService.getMovieCast(this.movieId).subscribe(
+      (data) => {
+        this.movieCast= data;
+      }
+    );
   }
 
 }

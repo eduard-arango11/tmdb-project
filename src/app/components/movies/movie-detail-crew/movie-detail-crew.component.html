@@ -12,7 +12,7 @@
       <ng-template #trueCase>
         <mat-list-item>
           <img *ngIf = 'person.profile_path !== null' matListAvatar src="https://image.tmdb.org/t/p/w45/{{person.profile_path}}">
-          <img *ngIf = 'person.profile_path === null' matListAvatar src="http://quickdrama.com/wp-content/themes/chillnflix_theme/images/noimg.png">
+          <img *ngIf = 'person.profile_path === null' matListAvatar src="assets/noimg.png">
           <h3 matLine> {{person.name}} </h3>
           <p matLine>
             <span> {{person.department}} </span>

@@ -1,0 +1,19 @@
+.movies-grid{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+mat-card{
+    width: 185px;
+    margin: 10px;
+    mat-card-title{
+        font-size: 90%;
+    }
+}
+
+.fix_icon{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}

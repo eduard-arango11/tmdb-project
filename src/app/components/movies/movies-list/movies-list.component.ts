@@ -74,14 +74,11 @@ export class MoviesListComponent implements OnInit {
         break;
       default:
         break;
-    }
-    console.log(this.listType);
-    
+    }    
 
     this.genresService.getAllMoviesGenres().subscribe(
       (data) => {
         this.allMoviesGenres = data;
-        console.log(this.allMoviesGenres);
       }
     );
   }

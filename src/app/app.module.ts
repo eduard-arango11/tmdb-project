@@ -34,6 +34,7 @@ import { HomeComponent } from './components/home/home.component';
 import { MoviesListComponent } from './components/movies/movies-list/movies-list.component';
 import { MovieDetailCastComponent } from './components/movies/movie-detail-cast/movie-detail-cast.component';
 import { MovieDetailCrewComponent } from './components/movies/movie-detail-crew/movie-detail-crew.component';
+import { MovieDetailRecommendationsComponent } from './components/movies/movie-detail-recommendations/movie-detail-recommendations.component';
 
 
 
@@ -45,7 +46,8 @@ import { MovieDetailCrewComponent } from './components/movies/movie-detail-crew/
     HomeComponent,
     MoviesListComponent,
     MovieDetailCastComponent,
-    MovieDetailCrewComponent
+    MovieDetailCrewComponent,
+    MovieDetailRecommendationsComponent
   ],
   imports: [
     BrowserModule,
@@ -73,6 +75,6 @@ import { MovieDetailCrewComponent } from './components/movies/movie-detail-crew/
   ],
   providers: [],
   bootstrap: [AppComponent],
-  exports: [MovieDetailComponent, SearchComponent, HomeComponent,MoviesListComponent, MovieDetailCastComponent, MovieDetailCrewComponent]
+  exports: [MovieDetailComponent, SearchComponent, HomeComponent,MoviesListComponent, MovieDetailCastComponent, MovieDetailCrewComponent, MovieDetailRecommendationsComponent]
 })
 export class AppModule { }

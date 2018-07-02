@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
 import { MovieService } from '../../../services/movie.service';
 
 @Component({
@@ -19,10 +19,17 @@ export class MovieDetailCrewComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.serviceCall();
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    this.serviceCall();
+  }
+
+  serviceCall(){
     this.movieService.getMovieCrew(this.movieId).subscribe(
       (data) => {
         this.movieCrew= data;
-        console.log(this.movieCrew, 'MovieCrew');
         
         //This is for fill variable options with all the departments in the service response:
         this.options.push('All');
@@ -31,8 +38,6 @@ export class MovieDetailCrewComponent implements OnInit {
             this.options.push(element.department);
           }
         });
-    
-        console.log(this.options, 'opciones');
       }
     );
   }
