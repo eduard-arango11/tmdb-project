@@ -35,6 +35,9 @@ import { MoviesListComponent } from './components/movies/movies-list/movies-list
 import { MovieDetailCastComponent } from './components/movies/movie-detail-cast/movie-detail-cast.component';
 import { MovieDetailCrewComponent } from './components/movies/movie-detail-crew/movie-detail-crew.component';
 import { MovieDetailRecommendationsComponent } from './components/movies/movie-detail-recommendations/movie-detail-recommendations.component';
+import { PersonDetailComponent } from './components/people/person-detail/person-detail.component';
+import { PersonDetailMoviesComponent } from './components/people/person-detail-movies/person-detail-movies.component';
+import { PersonDetailImagesComponent } from './components/people/person-detail-images/person-detail-images.component';
 
 
 
@@ -47,7 +50,10 @@ import { MovieDetailRecommendationsComponent } from './components/movies/movie-d
     MoviesListComponent,
     MovieDetailCastComponent,
     MovieDetailCrewComponent,
-    MovieDetailRecommendationsComponent
+    MovieDetailRecommendationsComponent,
+    PersonDetailComponent,
+    PersonDetailMoviesComponent,
+    PersonDetailImagesComponent
   ],
   imports: [
     BrowserModule,
@@ -75,6 +81,6 @@ import { MovieDetailRecommendationsComponent } from './components/movies/movie-d
   ],
   providers: [],
   bootstrap: [AppComponent],
-  exports: [MovieDetailComponent, SearchComponent, HomeComponent,MoviesListComponent, MovieDetailCastComponent, MovieDetailCrewComponent, MovieDetailRecommendationsComponent]
+  exports: [MovieDetailComponent, SearchComponent, HomeComponent,MoviesListComponent, MovieDetailCastComponent, MovieDetailCrewComponent, MovieDetailRecommendationsComponent, PersonDetailComponent, PersonDetailMoviesComponent, PersonDetailImagesComponent]
 })
 export class AppModule { }

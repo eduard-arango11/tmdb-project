@@ -1,0 +1,19 @@
+<div class="container">
+  <mat-card *ngFor="let movie of personMovies"
+  [routerLink]="['/movie/detail', movie.id]">
+    <div *ngIf = 'movie.poster_path !== null; then trueCase else falseCase'></div>
+    <ng-template #trueCase>
+      <mat-card-content>
+        <img mat-card-image src="https://image.tmdb.org/t/p/w185/{{movie.poster_path}}" >
+      </mat-card-content>
+    </ng-template>
+    <ng-template #falseCase>
+      <mat-card-content>
+        <img mat-card-image src="assets/noimg.png" >
+      </mat-card-content>
+    </ng-template>
+    <mat-card-title>{{movie.title}}</mat-card-title>
+    <mat-card-subtitle> <b>As: </b> {{movie.character}}</mat-card-subtitle>
+  </mat-card>
+</div>
+

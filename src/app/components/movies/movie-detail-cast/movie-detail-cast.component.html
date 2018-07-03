@@ -1,5 +1,7 @@
 <div class="images-tab">
-  <mat-card *ngFor="let actor of movieCast" class="actor-card">
+  <mat-card *ngFor="let actor of movieCast" class="actor-card"
+  [routerLink]="['/person/detail', actor.id]"
+  >
     <div *ngIf = 'actor.profile_path !== null; then trueCase else falseCase'></div>
     <ng-template #trueCase>
       <mat-card-content>

@@ -1,0 +1,60 @@
+<mat-card *ngIf="person" class="main">
+  <div class="detail-content">
+    <div>
+      <img src="https://image.tmdb.org/t/p/w342/{{person.profile_path}}">
+    </div>
+    <div class="information">
+      <mat-card-header>
+        <mat-card-title> {{person.name}} </mat-card-title>
+        <mat-card-subtitle>{{ person.birthday | date}} ({{ person.place_of_birth }}) - {{person.deathday | date}}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-divider [inset]="true"></mat-divider>
+      <h2>Biography</h2>
+      <p align="justify">
+        {{person.biography}}
+      </p>
+    </div>
+  </div>
+  <mat-tab-group mat-stretch-tabs="always">
+    <mat-tab label="Movies">
+      <app-person-detail-movies [personId]="personId"></app-person-detail-movies>
+    </mat-tab>
+    <mat-tab label="Images">
+      <app-person-detail-images [personId]="personId"></app-person-detail-images>
+    </mat-tab>
+    <!--mat-tab label="Images">
+      <mat-accordion>
+        <mat-expansion-panel [expanded]="true">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Backdrops
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="images-tab" >
+                <div *ngFor="let image of movieBackdropsImages" class="image-in-tab">
+                  <img src="https://image.tmdb.org/t/p/w300/{{image.file_path}}">
+                </div>
+            </div>
+          </mat-expansion-panel>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Posters
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="images-tab" >
+                <div *ngFor="let image of moviePostersImages" class="image-in-tab">
+                  <img src="https://image.tmdb.org/t/p/w185/{{image.file_path}}">
+                </div>
+            </div>
+          </mat-expansion-panel>
+      </mat-accordion>
+    </mat-tab-->
+    <!--mat-tab label="Crew">
+      <app-movie-detail-crew [movieId]="movieId"></app-movie-detail-crew>
+    </mat-tab>
+    <mat-tab label="Recommended Movies">
+      <app-movie-detail-recommendations [movieId]="movieId" (newMovieId)="ListenChild($event)"></app-movie-detail-recommendations>
+    </mat-tab-->
+  </mat-tab-group>
+</mat-card>

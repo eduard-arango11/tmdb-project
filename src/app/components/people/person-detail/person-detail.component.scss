@@ -1,0 +1,30 @@
+.main{
+    display: flex;
+    flex-direction: column;
+}
+
+.detail-content{
+    margin-bottom: 15px;
+    display: flex;
+    //justify-content: space-around;
+    //flex-basis: 0;
+    //align-items: row;
+    flex-direction: row;
+    mat-list{
+        display: flex; 
+        flex-direction: column; 
+        flex-wrap: wrap;
+        max-height: 200px; 
+        //border: solid green;
+    }
+    img {
+        border-radius: 10px;
+    }
+}
+
+.information{
+    margin-left: 50px;
+    mat-card-title{
+        font-size: 200%;
+    }
+}
