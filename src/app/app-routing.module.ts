@@ -7,6 +7,8 @@ import { HomeComponent } from './components/home/home.component';
 import { MovieDetailComponent } from './components/movies/movie-detail/movie-detail.component';
 import { PersonDetailComponent } from './components/people/person-detail/person-detail.component';
 import { SearchResultsComponent } from './components/search/search-results/search-results.component';
+import { MoviesListComponent } from './components/movies/movies-list/movies-list.component';
+import { PeopleListComponent } from './components/people/people-list/people-list.component';
 
 const routes: Routes = [
   {
@@ -24,6 +26,14 @@ const routes: Routes = [
   {
     path: 'search/:query',
     component: SearchResultsComponent
+  },
+  {
+    path: 'movies/:category',
+    component: MoviesListComponent
+  },
+  {
+    path: 'people/:type',
+    component: PeopleListComponent
   }
 ];
 

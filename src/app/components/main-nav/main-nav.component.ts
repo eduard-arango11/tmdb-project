@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'main-nav',
@@ -7,6 +8,15 @@ import { Component } from '@angular/core';
 })
 export class MainNavComponent {
     
-  constructor() {}
-  
+  constructor(
+    private router: Router
+  ) {}
+
+  searchN(){
+      this.router.navigate(['/movies', 'now_playing']);
   }
+  searchP(){
+      this.router.navigate(['/movies', 'popular']);
+  }
+  
+}

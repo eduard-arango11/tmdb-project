@@ -5,9 +5,11 @@
     fixedInViewport="true">
     <mat-toolbar color="primary">Menu</mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item href="#">Link 1</a>
-      <a mat-list-item href="#">Link 2</a>
-      <a mat-list-item href="#">Link 3</a>
+      <a mat-list-item (click)='searchN()' routerLinkActive="active">Movies in theatres</a>
+      <a mat-list-item [routerLink]="['/movies', 'top_rated']" routerLinkActive="active">Top rated movies</a>
+      <a mat-list-item (click)='searchP()' routerLinkActive="active">Popular movies</a>
+      <a mat-list-item [routerLink]="['/movies', 'upcoming']" routerLinkActive="active">Upcoming movies</a>
+      <a mat-list-item [routerLink]="['/people', 'popular']" routerLinkActive="active">Popuplar people</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>

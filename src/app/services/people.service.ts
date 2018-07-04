@@ -80,4 +80,24 @@ export class PeopleService {
         )
       );
   }
+
+  getPopularPeople () {
+    return this.http
+      .get(this.baseUrl + "popular" +this.apiKey)
+      .pipe(
+        map(
+          (response: any) => {
+            return response.results.map((item)=>{
+              return {
+                id: item.id,
+                profile_path: item.profile_path,
+                name: item.name,
+                known_for: item.known_for,
+                popularity: item.popularity
+              }
+            });
+          }
+        )
+      );
+  }
 }

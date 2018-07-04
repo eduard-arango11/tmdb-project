@@ -41,6 +41,7 @@ import { PersonDetailImagesComponent } from './components/people/person-detail-i
 import { MainNavComponent } from './components/main-nav/main-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { SearchResultsComponent } from './components/search/search-results/search-results.component';
+import { PeopleListComponent } from './components/people/people-list/people-list.component';
 
 
 
@@ -58,7 +59,8 @@ import { SearchResultsComponent } from './components/search/search-results/searc
     PersonDetailMoviesComponent,
     PersonDetailImagesComponent,
     MainNavComponent,
-    SearchResultsComponent
+    SearchResultsComponent,
+    PeopleListComponent
   ],
   imports: [
     BrowserModule,
@@ -87,6 +89,6 @@ import { SearchResultsComponent } from './components/search/search-results/searc
   ],
   providers: [],
   bootstrap: [AppComponent],
-  exports: [MovieDetailComponent, SearchComponent, HomeComponent,MoviesListComponent, MovieDetailCastComponent, MovieDetailCrewComponent, MovieDetailRecommendationsComponent, PersonDetailComponent, PersonDetailMoviesComponent, PersonDetailImagesComponent, SearchResultsComponent]
+  exports: [MovieDetailComponent, SearchComponent, HomeComponent,MoviesListComponent, MovieDetailCastComponent, MovieDetailCrewComponent, MovieDetailRecommendationsComponent, PersonDetailComponent, PersonDetailMoviesComponent, PersonDetailImagesComponent, SearchResultsComponent, PeopleListComponent]
 })
 export class AppModule { }
