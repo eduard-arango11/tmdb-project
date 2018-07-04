@@ -1,8 +1,15 @@
 <mat-card *ngIf="person" class="main">
   <div class="detail-content">
-    <div>
+      <div *ngIf = 'person.profile_path !== null; then trueCase else falseCase'></div>
+      <ng-template #trueCase>
+      <img src="https://image.tmdb.org/t/p/w342/{{person.profile_path}}" >
+      </ng-template>
+      <ng-template #falseCase>
+          <img src="assets/noimg.png" >
+      </ng-template>
+    <!--div>
       <img src="https://image.tmdb.org/t/p/w342/{{person.profile_path}}">
-    </div>
+    </div-->
     <div class="information">
       <mat-card-header>
         <mat-card-title> {{person.name}} </mat-card-title>
@@ -16,7 +23,7 @@
     </div>
   </div>
   <mat-tab-group mat-stretch-tabs="always">
-    <mat-tab label="Movies">
+    <mat-tab label="Known For">
       <app-person-detail-movies [personId]="personId"></app-person-detail-movies>
     </mat-tab>
     <mat-tab label="Images">

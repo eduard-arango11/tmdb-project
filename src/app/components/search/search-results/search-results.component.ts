@@ -9,13 +9,17 @@ import { SearchService } from '../../../services/search.service';
 })
 export class SearchResultsComponent implements OnInit {
 
-  public foundResult;
+  public moviesFound;
+  public peopleFound;
   private sub: any;
+  public isTheMouseOverPosterArray:Array<boolean>;
 
   constructor(
     private searchService: SearchService,
     private route: ActivatedRoute,
-  ) { }
+  ) { 
+    this.isTheMouseOverPosterArray = new Array<boolean>();
+  }
 
   ngOnInit() {
     this.sub = this.route.params.subscribe(
@@ -24,13 +28,39 @@ export class SearchResultsComponent implements OnInit {
         if (query !== "") {
           this.searchService.searchMovie(query).subscribe(
             (data) => {
-              this.foundResult= data;
-              console.log('resultado: ', this.foundResult);
+              this.moviesFound= data;
+              this.moviesFound.forEach(element => {
+                this.isTheMouseOverPosterArray.push(false);
+              });
             }
           );
         }
       }
     )
+
+    this.sub = this.route.params.subscribe(
+      params => {
+        let query:string = params['query'];
+        if (query !== "") {
+          this.searchService.searchPerson(query).subscribe(
+            (data) => {
+              this.peopleFound= data;
+              this.peopleFound.forEach(element => {
+                this.isTheMouseOverPosterArray.push(false);
+              });
+            }
+          );
+        }
+      }
+    )
+  }
+
+  eventMouse(index:number){
+    if (this.isTheMouseOverPosterArray[index]==false) {
+      this.isTheMouseOverPosterArray[index]=true;
+    } else {
+      this.isTheMouseOverPosterArray[index]=false;
+    }
   }
 
 }

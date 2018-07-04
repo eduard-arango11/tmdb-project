@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
 import { MovieService } from '../../../services/movie.service';
 import { GenresService } from '../../../services/genres.service';
 
@@ -8,18 +8,20 @@ import { GenresService } from '../../../services/genres.service';
   styleUrls: ['./movies-list.component.scss']
 })
 export class MoviesListComponent implements OnInit {
-  public moviesNowPlaying: any[];
+  public moviesList: any[];
   public allMoviesGenres: any[];
   public isTheMouseOverPosterArray:Array<boolean>;
   public title:string;
 
   @Input() public listType: string; //Can be now playing, popular, upcoming, or top rated movies.
+  //@Input() public moviesFound;
 
   constructor(
     private movieService: MovieService,
     private genresService: GenresService
   ) {
     this.isTheMouseOverPosterArray = new Array<boolean>();
+    //this.moviesFound = new Array<any>();
    }
 
   ngOnInit() {
@@ -27,9 +29,9 @@ export class MoviesListComponent implements OnInit {
       case 'now_playing':
         this.movieService.getNowPlayingMovies().subscribe(
           (data) => {
-            this.moviesNowPlaying = data;
+            this.moviesList = data;
     
-            this.moviesNowPlaying.forEach(element => {
+            this.moviesList.forEach(element => {
               this.isTheMouseOverPosterArray.push(false);
             });
           }
@@ -39,9 +41,9 @@ export class MoviesListComponent implements OnInit {
       case 'top_rated':
         this.movieService.getTopRatedMovies().subscribe(
           (data) => {
-            this.moviesNowPlaying = data;
+            this.moviesList = data;
     
-            this.moviesNowPlaying.forEach(element => {
+            this.moviesList.forEach(element => {
               this.isTheMouseOverPosterArray.push(false);
             });
           }
@@ -51,9 +53,9 @@ export class MoviesListComponent implements OnInit {
       case 'popular':
         this.movieService.getPopularMovies().subscribe(
           (data) => {
-            this.moviesNowPlaying = data;
+            this.moviesList = data;
     
-            this.moviesNowPlaying.forEach(element => {
+            this.moviesList.forEach(element => {
               this.isTheMouseOverPosterArray.push(false);
             });
           }
@@ -63,15 +65,18 @@ export class MoviesListComponent implements OnInit {
       case 'upcoming':
         this.movieService.getUpcomingMovies().subscribe(
           (data) => {
-            this.moviesNowPlaying = data;
+            this.moviesList = data;
     
-            this.moviesNowPlaying.forEach(element => {
+            this.moviesList.forEach(element => {
               this.isTheMouseOverPosterArray.push(false);
             });
           }
         );
         this.title="Upcoming Movies in Theatres";
         break;
+      /*case 'search':
+        this.title="Results";
+        break;*/
       default:
         break;
     }    
@@ -82,6 +87,13 @@ export class MoviesListComponent implements OnInit {
       }
     );
   }
+
+  /*ngOnChanges(changes: SimpleChanges) {
+    this.moviesList = this.moviesFound;
+    this.moviesList.forEach(element => {
+      this.isTheMouseOverPosterArray.push(false);
+    });
+  }*/
 
   eventMouse(index:number){
     if (this.isTheMouseOverPosterArray[index]==false) {

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, SimpleChanges } from '@angular/core';
 import { MovieService } from '../../../services/movie.service';
 import { ActivatedRoute } from '@angular/router';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
@@ -51,13 +51,12 @@ export class MovieDetailComponent implements OnInit {
             this.movieVideos= data;
           }
         );
-
-        window.scrollTo(0, 0)
+        window.scrollTo(0, 0);
       }
     )
   }
 
-  getSafeTrailer(key: string): any {
+  getSafeVideo(key: string): any {
     return this.sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/' + key);
   }
 

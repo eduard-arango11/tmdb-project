@@ -23,6 +23,7 @@ export class MovieDetailCrewComponent implements OnInit {
   }
 
   ngOnChanges(changes: SimpleChanges) {
+    this.options.push('All');
     this.serviceCall();
   }
 
@@ -32,7 +33,7 @@ export class MovieDetailCrewComponent implements OnInit {
         this.movieCrew= data;
         
         //This is for fill variable options with all the departments in the service response:
-        this.options.push('All');
+        
         this.movieCrew.forEach(element => {
           if(this.options.includes(element.department) === false){
             this.options.push(element.department);

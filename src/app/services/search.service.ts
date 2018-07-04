@@ -7,14 +7,14 @@ import { map } from 'rxjs/operators';
 })
 export class SearchService {
 
-  private baseUrl: string = "https://api.themoviedb.org/3/search/movie";
+  private baseUrl: string = "https://api.themoviedb.org/3/search/";
   private apiKey: string = "?api_key=0ca9ba5dc7030b0c10b24d60533cb44d&query=";
 
   constructor(private http: HttpClient) { }
 
   searchMovie(term: string) {
     return this.http
-      .get(this.baseUrl +  this.apiKey + term)
+      .get(this.baseUrl + 'movie' +  this.apiKey + term)
       .pipe(
         map(
           (response: any) => {
@@ -29,6 +29,26 @@ export class SearchService {
                 genre_ids: item.genre_ids,
                 overview: item.overview,
                 release_date: item.release_date
+              }
+            });
+          }
+        )
+      );
+  }
+
+  searchPerson(term: string) {
+    return this.http
+      .get(this.baseUrl + 'person'  +  this.apiKey + term)
+      .pipe(
+        map(
+          (response: any) => {
+            return response.results.map((item)=>{
+              return {
+                id: item.id,
+                name: item.name,
+                profile_path: item.profile_path,
+                known_for: item.known_for,
+                popularity: item.popularity
               }
             });
           }

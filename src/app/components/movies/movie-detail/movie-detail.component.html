@@ -1,6 +1,6 @@
 <mat-card *ngIf="movie" class="main">
   <div class="detail-content">
-    <div class="poster">
+    <div *ngIf="movie.poster_path">
       <img src="https://image.tmdb.org/t/p/w300/{{movie.poster_path}}">
     </div>
     <div class="information">
@@ -68,7 +68,7 @@
         <mat-tab label="Videos">
           <div class="images-tab" >
               <div *ngFor="let video of movieVideos" class="image-in-tab">
-                  <iframe [src]="getSafeTrailer(video.key)" width="500" height="350"></iframe>
+                  <iframe [src]="getSafeVideo(video.key)" width="500" height="350"></iframe>
               </div>
           </div>
         </mat-tab>

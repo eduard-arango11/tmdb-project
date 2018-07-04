@@ -1,6 +1,6 @@
 <h1>{{title}}</h1>
 <div class="movies-grid">
-  <div *ngFor="let movie of moviesNowPlaying, let i=index"
+  <div *ngFor="let movie of moviesList, let i=index"
   class="poster"
   [routerLink]="['/movie/detail', movie.id]"
   (mouseover)="eventMouse(i)"
