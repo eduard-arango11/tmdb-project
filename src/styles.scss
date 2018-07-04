@@ -12,3 +12,12 @@ $theme: mat-light-theme($primary, $accent, $warn);
 
 @include angular-material-theme($theme);
 @include covalent-theme($theme); // $typography is an **optional** argument for the covalent-theme
+
+html,
+body{
+    height: 100%;
+}
+
+body{
+    margin: 0;
+}

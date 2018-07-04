@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import {FormControl} from '@angular/forms';
+import { Component, OnInit } from '@angular/core'
+import { SearchService } from '../../services/search.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search',
@@ -8,14 +9,19 @@ import {FormControl} from '@angular/forms';
 })
 export class SearchComponent implements OnInit {
 
-  public searchedTerm: string;
+  public searchedTerm: string = "";
 
-  myControl = new FormControl();
-  options: string[] = ['One', 'Two', 'Three'];
-
-  constructor() { }
+  constructor(
+    private router: Router
+  ) { }
 
   ngOnInit() {
+  }
+
+  search(){
+    if (this.searchedTerm !== "") {
+      this.router.navigate(['/search', this.searchedTerm]);
+    }
   }
 
 }

@@ -1,5 +1,5 @@
-<div class="example-form">
-  <div style="display: flex;">
+<!--div class="example-form">
+  <div style="display: flex;"-->
     <!--div>
       <mat-form-field class="example-full-width">
         <input matInput placeholder="Search something" [(ngModel)]="searchedTerm">
@@ -10,7 +10,7 @@
         </mat-autocomplete>
       </mat-form-field>
     </div-->
-    <form class="example-form">
+    <!--form class="example-form">
       <mat-form-field class="example-full-width">
         <input type="text" placeholder="Pick one" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
       </mat-form-field>
@@ -19,4 +19,15 @@
       <button mat-raised-button (click)="search()">Search</button>
     </div>
   </div>
-</div>
+</div-->
+
+<form class="example-form">
+  <mat-form-field class="example-full-width" floatLabel="never">
+    <input type="text" name="mysearch" [(ngModel)]="searchedTerm" (keyup)='search()' matInput>
+    <mat-placeholder>Search a movie</mat-placeholder>
+    <mat-icon matSuffix style="font-size: 1.2em">search</mat-icon>
+  </mat-form-field>
+</form>
+<!--button mat-icon-button>
+  <mat-icon>search</mat-icon>
+</button-->

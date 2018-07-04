@@ -7,14 +7,14 @@ import { map } from 'rxjs/operators';
 })
 export class SearchService {
 
-  private url: string = "https://api.themoviedb.org/3/search/api_key=0ca9ba5dc7030b0c10b24d60533cb44d&query=";
-  private key: string = "?api_key=0ca9ba5dc7030b0c10b24d60533cb44d&query=";
+  private baseUrl: string = "https://api.themoviedb.org/3/search/movie";
+  private apiKey: string = "?api_key=0ca9ba5dc7030b0c10b24d60533cb44d&query=";
 
   constructor(private http: HttpClient) { }
 
   searchMovie(term: string) {
     return this.http
-      .get(this.url + 'movie?' + this.key + term)
+      .get(this.baseUrl +  this.apiKey + term)
       .pipe(
         map(
           (response: any) => {
@@ -26,7 +26,9 @@ export class SearchService {
                 vote_count: item.vote_count,
                 vote_average: item.vote_average,
                 popularity: item.popularity,
-                original_title: item.original_title
+                genre_ids: item.genre_ids,
+                overview: item.overview,
+                release_date: item.release_date
               }
             });
           }

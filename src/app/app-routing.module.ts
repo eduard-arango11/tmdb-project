@@ -6,6 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { MovieDetailComponent } from './components/movies/movie-detail/movie-detail.component';
 import { PersonDetailComponent } from './components/people/person-detail/person-detail.component';
+import { SearchResultsComponent } from './components/search/search-results/search-results.component';
 
 const routes: Routes = [
   {
@@ -19,6 +20,10 @@ const routes: Routes = [
   {
     path: 'person/detail/:id',
     component: PersonDetailComponent
+  },
+  {
+    path: 'search/:query',
+    component: SearchResultsComponent
   }
 ];
 

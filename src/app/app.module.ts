@@ -38,6 +38,9 @@ import { MovieDetailRecommendationsComponent } from './components/movies/movie-d
 import { PersonDetailComponent } from './components/people/person-detail/person-detail.component';
 import { PersonDetailMoviesComponent } from './components/people/person-detail-movies/person-detail-movies.component';
 import { PersonDetailImagesComponent } from './components/people/person-detail-images/person-detail-images.component';
+import { MainNavComponent } from './components/main-nav/main-nav.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { SearchResultsComponent } from './components/search/search-results/search-results.component';
 
 
 
@@ -53,7 +56,9 @@ import { PersonDetailImagesComponent } from './components/people/person-detail-i
     MovieDetailRecommendationsComponent,
     PersonDetailComponent,
     PersonDetailMoviesComponent,
-    PersonDetailImagesComponent
+    PersonDetailImagesComponent,
+    MainNavComponent,
+    SearchResultsComponent
   ],
   imports: [
     BrowserModule,
@@ -77,10 +82,11 @@ import { PersonDetailImagesComponent } from './components/people/person-detail-i
     MatChipsModule,
     MatAutocompleteModule,
     MatExpansionModule,
-    MatSelectModule
+    MatSelectModule,
+    LayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent],
-  exports: [MovieDetailComponent, SearchComponent, HomeComponent,MoviesListComponent, MovieDetailCastComponent, MovieDetailCrewComponent, MovieDetailRecommendationsComponent, PersonDetailComponent, PersonDetailMoviesComponent, PersonDetailImagesComponent]
+  exports: [MovieDetailComponent, SearchComponent, HomeComponent,MoviesListComponent, MovieDetailCastComponent, MovieDetailCrewComponent, MovieDetailRecommendationsComponent, PersonDetailComponent, PersonDetailMoviesComponent, PersonDetailImagesComponent, SearchResultsComponent]
 })
 export class AppModule { }
