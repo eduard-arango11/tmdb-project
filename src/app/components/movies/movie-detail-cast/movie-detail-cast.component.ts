@@ -8,7 +8,7 @@ import { MovieService } from '../../../services/movie.service';
 })
 export class MovieDetailCastComponent implements OnInit {
   
-  public movieCast;
+  private movieCast;
 
   @Input() public movieId;
 

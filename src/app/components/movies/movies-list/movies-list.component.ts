@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MovieService } from '../../../services/movie.service';
 import { GenresService } from '../../../services/genres.service';
@@ -9,12 +9,10 @@ import { GenresService } from '../../../services/genres.service';
   styleUrls: ['./movies-list.component.scss']
 })
 export class MoviesListComponent implements OnInit {
-  public moviesList: any[];
-  public allMoviesGenres: any[];
-  public isTheMouseOverPosterArray:Array<boolean>;
-  public title:string;
-
-  //@Input() public listType: string; //Can be now playing, popular, upcoming, or top rated movies.
+  private moviesList: any[];
+  private allMoviesGenres: any[];
+  private isTheMouseOverPosterArray:Array<boolean>;
+  private title:string;
 
   private listType:string;
   private sub: any; 
@@ -25,7 +23,6 @@ export class MoviesListComponent implements OnInit {
     private route: ActivatedRoute,
   ) {
     this.isTheMouseOverPosterArray = new Array<boolean>();
-    //this.moviesFound = new Array<any>();
    }
 
   ngOnInit() {
@@ -91,14 +88,6 @@ export class MoviesListComponent implements OnInit {
         this.allMoviesGenres = data;
       }
     );*/
-  }
-
-  ngOnChanges(changes: SimpleChanges) {
-    this.myFunction();
-  }
-
-  myFunction(){
-    
   }
 
   eventMouse(index:number){

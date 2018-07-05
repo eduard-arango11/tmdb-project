@@ -9,10 +9,10 @@ import { SearchService } from '../../../services/search.service';
 })
 export class SearchResultsComponent implements OnInit {
 
-  public moviesFound;
-  public peopleFound;
+  private moviesFound;
+  private peopleFound;
   private sub: any;
-  public isTheMouseOverPosterArray:Array<boolean>;
+  private isTheMouseOverPosterArray:Array<boolean>;
 
   constructor(
     private searchService: SearchService,

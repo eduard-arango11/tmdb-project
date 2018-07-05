@@ -1,10 +1,3 @@
-img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    border-radius: 10px;
-}
-
 .poster{
     margin: 15px;
     display: block;
@@ -12,6 +5,11 @@ img {
     height: 450px;
     background-color: black;
     border-radius: 10px;
+    img {
+        width: 300px;
+        height: 450px;
+        border-radius: 10px;
+    }
 }
 
 .movie-title{
@@ -24,9 +22,13 @@ img {
     text-align: justify;
 }
 
-.movies-grid{
+.list-movies{
     display: flex;
-    flex-wrap: wrap;
-    flex-basis: 0;
+    flex-direction: column;
+    align-items: center;
+    .movies-grid{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
 }
-

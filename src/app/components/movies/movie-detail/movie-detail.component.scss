@@ -1,9 +1,13 @@
 .title{
     align-self: center;
-}
+    .movie-title{
+        font-size: 230%;
 
-.movie-title{
-    font-size: 230%;
+    }
+    mat-chip-list{
+        display: flex;
+        justify-content: center;
+    }
 }
 
 .movie-overview{

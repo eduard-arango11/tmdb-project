@@ -8,7 +8,7 @@ import { PeopleService } from '../../../services/people.service';
 })
 export class PersonDetailImagesComponent implements OnInit {
 
-  public personImages;
+  private personImages;
 
   @Input() public personId;
 

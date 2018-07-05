@@ -1,22 +1,24 @@
-<h1>{{title}}</h1>
-<div class="movies-grid">
-  <div *ngFor="let movie of moviesList, let i=index"
-  class="poster"
-  [routerLink]="['/movie/detail', movie.id]"
-  (mouseover)="eventMouse(i)"
-  (mouseout)="eventMouse(i)"
-  >
-    <div *ngIf = 'movie.poster_path !== null; then trueCase else falseCase'></div>
-    <ng-template #trueCase>
-      <img [hidden]='isTheMouseOverPosterArray[i]' src="https://image.tmdb.org/t/p/w300/{{movie.poster_path}}" >
-    </ng-template>
-    <ng-template #falseCase>
-        <img [hidden]='isTheMouseOverPosterArray[i]' src="assets/noimg.png" >
-    </ng-template>
-    
-    <div [hidden]='!isTheMouseOverPosterArray[i]'>
-      <h2 class="movie-title"> {{movie.title}} ({{movie.release_date | date:'y'}})</h2>
-      <p class="movie-summary">{{ (movie.overview.length > 300) ? (movie.overview | slice:0:300) + '...' : (movie.overview) }}</p>
+<div class="list-movies">
+  <h1>{{title}}</h1>
+  <div class="movies-grid">
+    <div *ngFor="let movie of moviesList, let i=index"
+    class='poster'
+    [routerLink]="['/movie/detail', movie.id]"
+    (mouseover)="eventMouse(i)"
+    (mouseout)="eventMouse(i)"
+    >
+      <div *ngIf = 'movie.poster_path !== null; then trueCase else falseCase'></div>
+      <ng-template #trueCase>
+        <img [hidden]='isTheMouseOverPosterArray[i]' src="https://image.tmdb.org/t/p/w300/{{movie.poster_path}}" >
+      </ng-template>
+      <ng-template #falseCase>
+          <img [hidden]='isTheMouseOverPosterArray[i]' src="assets/noimg.png" >
+      </ng-template>
+      
+      <div [hidden]='!isTheMouseOverPosterArray[i]'>
+        <h2 class="movie-title"> {{movie.title}} ({{movie.release_date | date:'y'}})</h2>
+        <p class="movie-summary">{{ (movie.overview.length > 300) ? (movie.overview | slice:0:300) + '...' : (movie.overview) }}</p>
+      </div>
     </div>
   </div>
 </div>

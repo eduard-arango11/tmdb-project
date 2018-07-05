@@ -10,13 +10,13 @@ import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 })
 export class MovieDetailComponent implements OnInit {
 
-  public movieId;
-  public movie;
-  public movieBackdropsImages;
-  public moviePostersImages;
-  public movieVideos:Array<any>;
+  private movieId;
+  private movie;
+  private movieBackdropsImages;
+  private moviePostersImages;
+  private movieVideos:Array<any>;
   
-  public movieTailer;
+  private movieTailer;
   private sub: any;
 
   constructor(
@@ -63,7 +63,7 @@ export class MovieDetailComponent implements OnInit {
     )
   }
 
-  ngOnChanges(changes: SimpleChanges){
+  /*ngOnChanges(changes: SimpleChanges){
     this.sub = this.route.params.subscribe(
       params => {
         this.movieId = +params['id'];
@@ -77,7 +77,7 @@ export class MovieDetailComponent implements OnInit {
     }
     );
   
-  }
+  }*/
 
   getTrailer(videos:Array<any>){
     for(let element of videos){
@@ -90,7 +90,8 @@ export class MovieDetailComponent implements OnInit {
   }
 
   getSafeTrailer(key: string): any {
-    return this.sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/' + key + '?autoplay=1&rel=0');
+    //return this.sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/' + key + '?autoplay=1&rel=0');
+    return this.sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/' + key + '?&rel=0');
   }
 
   getSafeVideo(key: string): any {

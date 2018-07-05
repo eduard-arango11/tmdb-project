@@ -1,7 +1,6 @@
 <mat-card *ngIf="movie" class="main">
     <mat-card-header class="title">
       <mat-card-title class="movie-title"> {{movie.title}} </mat-card-title>
-      <!--mat-card-subtitle>Release date: {{ movie.release_date | date}}</mat-card-subtitle-->
       <mat-card-subtitle>
         <mat-chip-list>
           <mat-chip *ngFor="let genre of movie.genres" color="accent" selected="true">

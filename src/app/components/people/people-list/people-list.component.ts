@@ -9,8 +9,8 @@ import { PeopleService } from '../../../services/people.service';
 })
 export class PeopleListComponent implements OnInit {
 
-  public listType:string;
-  public people;
+  private listType:string;
+  private people;
   private sub: any;
 
   constructor(
