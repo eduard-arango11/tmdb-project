@@ -12,11 +12,11 @@ export class MainNavComponent {
     private router: Router
   ) {}
 
-  searchN(){
-      this.router.navigate(['/movies', 'now_playing']);
+  /*searchN(){
+      this.router.navigateByUrl('/movies/' + 'now_playing');
   }
   searchP(){
-      this.router.navigate(['/movies', 'popular']);
-  }
+      this.router.navigateByUrl('/movies/' + 'popular');
+  }*/
   
 }

@@ -1,44 +1,31 @@
-/*.movie-detail-card{
-    max-width: 700px;
-}
-
-.movie-poster{
-    max-width: 400px;
+.title{
+    align-self: center;
 }
 
 .movie-title{
-    font-size: 200%;
+    font-size: 230%;
 }
 
-.stats{
-    margin-left: 200px;
-    margin-bottom: 50px;
-}*/
-//desde aqui!!
-
-.movie-title{
-    font-size: 200%;
+.movie-overview{
+    padding-top: 20px;
+    font-size: 170%;
 }
 
 .main{
     display: flex;
-    //flex-basis: 0;
     flex-direction: column;
+    min-height: stretch;
 }
 
 .detail-content{
     margin-bottom: 15px;
     display: flex;
-    //justify-content: space-around;
-    //flex-basis: 0;
-    //align-items: row;
     flex-direction: row;
     mat-list{
         display: flex; 
         flex-direction: column; 
         flex-wrap: wrap;
         max-height: 200px; 
-        //border: solid green;
     }
     img {
         border-radius: 10px;
@@ -47,12 +34,10 @@
 
 .information{
     margin-left: 50px;
-    //border: solid green;
 }
 
 .extra-tabs{
     width: 100%;
-    //border: solid blue;
     display: flex;
     flex-direction: column;
     justify-content:center;
@@ -67,7 +52,27 @@
 
 .image-in-tab{
     margin: 10px;
-    //width: 300px;
-    //height: 150px;
-    //border: solid orange;
+}
+
+.fix_icon{
+    padding-right: 30px;
+    padding-bottom: 10px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.icons-information{
+    padding-left: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.detail-left{
+    display: flex;
+    flex-direction: column;
 }

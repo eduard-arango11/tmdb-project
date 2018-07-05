@@ -14,14 +14,18 @@ export class MovieDetailComponent implements OnInit {
   public movie;
   public movieBackdropsImages;
   public moviePostersImages;
-  public movieVideos;
+  public movieVideos:Array<any>;
+  
+  public movieTailer;
   private sub: any;
 
   constructor(
     private movieService: MovieService,
     private route: ActivatedRoute,
     private sanitizer: DomSanitizer,
-  ) { }
+  ) { 
+    this.movieVideos = new Array<any>();
+  }
 
   ngOnInit() {
     this.sub = this.route.params.subscribe(
@@ -49,11 +53,44 @@ export class MovieDetailComponent implements OnInit {
         this.movieService.getMovieVideos(id).subscribe(
           (data) => {
             this.movieVideos= data;
+            this.getTrailer(this.movieVideos);
           }
         );
-        window.scrollTo(0, 0);
+
+        
+        //window.scrollTo(0, 0);
       }
     )
+  }
+
+  ngOnChanges(changes: SimpleChanges){
+    this.sub = this.route.params.subscribe(
+      params => {
+        this.movieId = +params['id'];
+        let id:number = +params['id'];
+    this.movieService.getMovieVideos(id).subscribe(
+      (data) => {
+        this.movieVideos= data;
+        this.getTrailer(this.movieVideos);
+      }
+    );
+    }
+    );
+  
+  }
+
+  getTrailer(videos:Array<any>){
+    for(let element of videos){
+      if (element.type === 'Trailer') {
+        this.movieTailer = element;
+      } else {
+        this.movieTailer = false;
+      }
+    }
+  }
+
+  getSafeTrailer(key: string): any {
+    return this.sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/' + key + '?autoplay=1&rel=0');
   }
 
   getSafeVideo(key: string): any {

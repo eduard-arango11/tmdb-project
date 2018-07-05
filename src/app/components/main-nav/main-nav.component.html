@@ -5,11 +5,11 @@
     fixedInViewport="true">
     <mat-toolbar color="primary">Menu</mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item (click)='searchN()' routerLinkActive="active">Movies in theatres</a>
-      <a mat-list-item [routerLink]="['/movies', 'top_rated']" routerLinkActive="active">Top rated movies</a>
-      <a mat-list-item (click)='searchP()' routerLinkActive="active">Popular movies</a>
-      <a mat-list-item [routerLink]="['/movies', 'upcoming']" routerLinkActive="active">Upcoming movies</a>
-      <a mat-list-item [routerLink]="['/people', 'popular']" routerLinkActive="active">Popuplar people</a>
+      <a mat-list-item (click)="drawer.close()" [routerLink]="['/movies', 'popular']">Movies in theatres</a>
+      <a mat-list-item (click)="drawer.close()" [routerLink]="['/movies', 'top_rated']">Top rated movies</a>
+      <a mat-list-item (click)="drawer.close()" [routerLink]="['/movies', 'popular']">Popular movies</a>
+      <a mat-list-item (click)="drawer.close()" [routerLink]="['/movies', 'upcoming']">Upcoming movies</a>
+      <a mat-list-item (click)="drawer.close()" [routerLink]="['/people', 'popular']">Popuplar people</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -21,7 +21,7 @@
         (click)="drawer.toggle()">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span [routerLink]="['']">Movies Application</span>
+      <span [routerLink]="['']" >Movies Application</span>
       <span class="example-spacer"></span>
       <app-search></app-search>
     </mat-toolbar>

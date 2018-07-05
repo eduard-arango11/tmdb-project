@@ -1,27 +1,67 @@
 <mat-card *ngIf="movie" class="main">
+    <mat-card-header class="title">
+      <mat-card-title class="movie-title"> {{movie.title}} </mat-card-title>
+      <!--mat-card-subtitle>Release date: {{ movie.release_date | date}}</mat-card-subtitle-->
+      <mat-card-subtitle>
+        <mat-chip-list>
+          <mat-chip *ngFor="let genre of movie.genres" color="accent" selected="true">
+            {{genre.name}}
+          </mat-chip> 
+        </mat-chip-list>
+      </mat-card-subtitle>
+  </mat-card-header>
   <div class="detail-content">
-    <div *ngIf="movie.poster_path">
-      <img src="https://image.tmdb.org/t/p/w300/{{movie.poster_path}}">
+    <div class="detail-left">
+      <div *ngIf="movie.poster_path">
+        <img src="https://image.tmdb.org/t/p/w300/{{movie.poster_path}}">
+      </div>
     </div>
     <div class="information">
-      <mat-card-header>
-        <mat-card-title class="movie-title"> {{movie.title}} </mat-card-title>
-        <mat-card-subtitle>Release date: {{ movie.release_date | date}}</mat-card-subtitle>
-        <mat-card-subtitle>
-          <mat-chip-list>
-            <mat-chip *ngFor="let genre of movie.genres" color="accent" selected="true">
-              {{genre.name}}
-            </mat-chip> 
-          </mat-chip-list>
-        </mat-card-subtitle>
+        <mat-card-header>
+          <mat-card-subtitle>
+            <ul class="icons-information">
+              <li class="fix_icon" *ngIf="movie.runtime">
+                <div>
+                  <mat-icon>star</mat-icon>
+                </div>
+                <div>{{movie.vote_average}}</div>
+              </li>
+              <li class="fix_icon" *ngIf="movie.release_date">
+                <div>
+                  <mat-icon>event</mat-icon>
+                </div>
+                <div>Released: {{movie.release_date | date}}</div>
+              </li>
+              <li class="fix_icon" *ngIf="movie.runtime">
+                <div>
+                  <mat-icon>update</mat-icon>
+                </div>
+                <div>Runtime: {{movie.runtime}} min</div>
+              </li>
+              <li class="fix_icon" *ngIf="movie.revenue">
+                <div>
+                  <mat-icon>attach_money</mat-icon>
+                </div>
+                <div>Profit: {{movie.revenue | currency}}</div>
+              </li>
+              <li class="fix_icon" *ngIf="movie.budget">
+                <div>
+                  <mat-icon>money_off</mat-icon>
+                </div>
+                <div>Inversion: {{movie.budget | currency}}</div>
+              </li>
+            </ul>
+          </mat-card-subtitle>
       </mat-card-header>
       <mat-divider [inset]="true"></mat-divider>
-      <h2>Overview</h2>
+      <mat-card-title class="movie-overview">Overview</mat-card-title>
       <p align="justify">
         {{movie.overview}}
       </p>
-  
-      <mat-tab-group>
+      <div *ngIf="movieTailer" class="image-in-tab">
+        <iframe [src]="getSafeTrailer(movieTailer.key)" width="500" height="350"></iframe>
+      </div>
+      <!--mat-tab-group>
         <mat-tab label="Production Companies">
           <mat-list role="list">
             <mat-list-item role="listitem" *ngFor="let companie of movie.production_companies">{{companie.name}}</mat-list-item>
@@ -32,11 +72,11 @@
             <mat-list-item role="listitem" *ngFor="let country of movie.production_countries">{{country.name}} </mat-list-item>
           </mat-list>
         </mat-tab>
-      </mat-tab-group>
+      </mat-tab-group-->
     </div>
   </div>
   <div class="extra-tabs">
-      <mat-tab-group mat-stretch-tabs="always">
+      <mat-tab-group mat-stretch-tabs="always" color="primary">
         <mat-tab label="Images">
           <mat-accordion>
             <mat-expansion-panel [expanded]="true">

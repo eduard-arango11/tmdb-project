@@ -31,16 +31,66 @@ export class MoviesListComponent implements OnInit {
   ngOnInit() {
     this.sub = this.route.params.subscribe(
       params => {
-        this.listType = params['category'];
+        let ty:string = params['category'];
+        switch (ty) {
+          case 'now_playing':
+            this.movieService.getNowPlayingMovies().subscribe(
+              (data) => {
+                this.moviesList = data;
+        
+                this.moviesList.forEach(element => {
+                  this.isTheMouseOverPosterArray.push(false);
+                });
+              }
+            );
+            this.title="Movies in Theatres";
+            break;
+          case 'top_rated':
+            this.movieService.getTopRatedMovies().subscribe(
+              (data) => {
+                this.moviesList = data;
+        
+                this.moviesList.forEach(element => {
+                  this.isTheMouseOverPosterArray.push(false);
+                });
+              }
+            );
+            this.title="Top Rated Movies";
+            break;
+          case 'popular':
+            this.movieService.getPopularMovies().subscribe(
+              (data) => {
+                this.moviesList = data;
+        
+                this.moviesList.forEach(element => {
+                  this.isTheMouseOverPosterArray.push(false);
+                });
+              }
+            );
+            this.title="Popular Movies";
+            break;
+          case 'upcoming':
+            this.movieService.getUpcomingMovies().subscribe(
+              (data) => {
+                this.moviesList = data;
+        
+                this.moviesList.forEach(element => {
+                  this.isTheMouseOverPosterArray.push(false);
+                });
+              }
+            );
+            this.title="Upcoming Movies in Theatres";
+            break;
+          default:
+            break;
+        }
       }
     )
-    console.log(this.listType);
-    this.myFunction();
-    this.genresService.getAllMoviesGenres().subscribe(
+    /*this.genresService.getAllMoviesGenres().subscribe(
       (data) => {
         this.allMoviesGenres = data;
       }
-    );
+    );*/
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -48,58 +98,7 @@ export class MoviesListComponent implements OnInit {
   }
 
   myFunction(){
-    switch (this.listType) {
-      case 'now_playing':
-        this.movieService.getNowPlayingMovies().subscribe(
-          (data) => {
-            this.moviesList = data;
     
-            this.moviesList.forEach(element => {
-              this.isTheMouseOverPosterArray.push(false);
-            });
-          }
-        );
-        this.title="Movies in Theatres";
-        break;
-      case 'top_rated':
-        this.movieService.getTopRatedMovies().subscribe(
-          (data) => {
-            this.moviesList = data;
-    
-            this.moviesList.forEach(element => {
-              this.isTheMouseOverPosterArray.push(false);
-            });
-          }
-        );
-        this.title="Top Rated Movies";
-        break;
-      case 'popular':
-        this.movieService.getPopularMovies().subscribe(
-          (data) => {
-            this.moviesList = data;
-    
-            this.moviesList.forEach(element => {
-              this.isTheMouseOverPosterArray.push(false);
-            });
-          }
-        );
-        this.title="Popular Movies";
-        break;
-      case 'upcoming':
-        this.movieService.getUpcomingMovies().subscribe(
-          (data) => {
-            this.moviesList = data;
-    
-            this.moviesList.forEach(element => {
-              this.isTheMouseOverPosterArray.push(false);
-            });
-          }
-        );
-        this.title="Upcoming Movies in Theatres";
-        break;
-      default:
-        break;
-    }
   }
 
   eventMouse(index:number){

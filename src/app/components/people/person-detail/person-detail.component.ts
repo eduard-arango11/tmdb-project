@@ -29,7 +29,7 @@ export class PersonDetailComponent implements OnInit {
           }
         );
 
-        window.scrollTo(0, 0)
+        //window.scrollTo(0, 0)
       }
     )
   }

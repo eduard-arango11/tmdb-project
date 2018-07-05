@@ -148,7 +148,8 @@ export class MovieService {
                 spoken_languages: response.spoken_languages,
                 status: response.status,
                 budget: response.budget,
-                revenue: response.revenue
+                revenue: response.revenue,
+                runtime: response.runtime
               }
           }
         )
