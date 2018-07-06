@@ -7,8 +7,8 @@ import { map } from 'rxjs/operators';
 })
 export class MovieService {
 
-  private baseUrl: string = "https://api.themoviedb.org/3/movie/";
-  private apiKey: string = "?api_key=0ca9ba5dc7030b0c10b24d60533cb44d";
+  public baseUrl: string = "https://api.themoviedb.org/3/movie/";
+  public apiKey: string = "?api_key=0ca9ba5dc7030b0c10b24d60533cb44d";
 
   constructor(private http: HttpClient) { }
 

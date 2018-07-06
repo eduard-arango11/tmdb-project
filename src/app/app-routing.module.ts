@@ -13,7 +13,8 @@ import { PeopleListComponent } from './components/people/people-list/people-list
 const routes: Routes = [
   {
     path: '',
-    component: HomeComponent
+    redirectTo: 'movies/now_playing/1',
+    pathMatch: 'full'
   },
   {
     path: 'movie/detail/:id',

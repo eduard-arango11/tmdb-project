@@ -10,16 +10,16 @@ import { DomSanitizer, SafeUrl, SafeResourceUrl } from '@angular/platform-browse
 })
 export class MovieDetailComponent implements OnInit {
 
-  private movieId;
-  private movie;
-  private movieBackdropsImages;
-  private moviePostersImages;
-  private movieVideos:Array<any>;
+  public movieId;
+  public movie;
+  public movieBackdropsImages;
+  public moviePostersImages;
+  public movieVideos:Array<any>;
   
-  private movieTailer;
-  private safeURLTrailer;
-  private safeVideosUrls:Array<any>;
-  private sub: any;
+  public movieTailer;
+  public safeURLTrailer;
+  public safeVideosUrls:Array<any>;
+  public sub: any;
 
   constructor(
     private movieService: MovieService,

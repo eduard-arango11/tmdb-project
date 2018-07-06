@@ -8,7 +8,7 @@ import { MovieService } from '../../../services/movie.service';
 })
 export class MovieDetailRecommendationsComponent implements OnInit {
   
-  private movieRecommendations;
+  public movieRecommendations;
 
   @Input() public movieId;
   @Output() newMovieId = new EventEmitter();

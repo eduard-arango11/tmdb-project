@@ -9,9 +9,9 @@ import { PeopleService } from '../../../services/people.service';
 })
 export class PersonDetailComponent implements OnInit {
 
-  private personId;
-  private person;
-  private sub: any;    
+  public personId;
+  public person;
+  public sub: any;    
 
   constructor(
     private peopleService: PeopleService,

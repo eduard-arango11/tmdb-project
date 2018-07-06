@@ -10,14 +10,14 @@ import { PeopleService } from '../../../services/people.service';
 })
 export class PeopleListComponent implements OnInit {
 
-  private currentType:string;
-  private people;
-  private sub: any;
+  public currentType:string;
+  public people;
+  public sub: any;
 
-  private currentPage;
-  private totalResults:number;
-  private totalPages:number;
-  private eventLinks: IPageChangeEvent;
+  public currentPage;
+  public totalResults:number;
+  public totalPages:number;
+  public eventLinks: IPageChangeEvent;
 
   constructor(
     private peopleService: PeopleService,

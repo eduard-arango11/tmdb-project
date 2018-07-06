@@ -8,9 +8,9 @@ import { MovieService } from '../../../services/movie.service';
 })
 export class MovieDetailCrewComponent implements OnInit {
 
-  private selected = 'All';
-  private options: Array<string>;
-  private movieCrew;
+  public selected = 'All';
+  public options: Array<string>;
+  public movieCrew;
 
   @Input() public movieId;
 

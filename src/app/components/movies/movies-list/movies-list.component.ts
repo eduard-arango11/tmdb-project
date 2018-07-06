@@ -10,20 +10,20 @@ import { GenresService } from '../../../services/genres.service';
   styleUrls: ['./movies-list.component.scss']
 })
 export class MoviesListComponent implements OnInit {
-  private moviesList: any[];
-  private allMoviesGenres: any[];
-  private isTheMouseOverPosterArray:Array<boolean>;
-  private title:string;
+  public moviesList: any[];
+  public allMoviesGenres: any[];
+  public isTheMouseOverPosterArray:Array<boolean>;
+  public title:string;
 
   //Paginator
-  private currentPage:number = 1;
-  private currentCategory:string;
-  private totalResults:number;
-  private totalPages:number;
-  private eventLinks: IPageChangeEvent;
+  public currentPage:number = 1;
+  public currentCategory:string;
+  public totalResults:number;
+  public totalPages:number;
+  public eventLinks: IPageChangeEvent;
 
-  private listType:string;
-  private sub: any; 
+  public listType:string;
+  public sub: any; 
 
   constructor(
     private movieService: MovieService,
