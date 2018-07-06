@@ -81,9 +81,9 @@ export class PeopleService {
       );
   }
 
-  getPopularPeople () {
+  getPopularPeople (page:number) {
     return this.http
-      .get(this.baseUrl + "popular" +this.apiKey)
+      .get(this.baseUrl + "popular" +this.apiKey + '&page=' + page)
       .pipe(
         map(
           (response: any) => {
@@ -93,7 +93,9 @@ export class PeopleService {
                 profile_path: item.profile_path,
                 name: item.name,
                 known_for: item.known_for,
-                popularity: item.popularity
+                popularity: item.popularity,
+                total_pages: response.total_pages,
+                total_results: response.total_results
               }
             });
           }

@@ -1,5 +1,5 @@
 <div class="list-movies">
-    <h1>{{title}}</h1>
+  <h1>{{title}}</h1>
   <td-paging-bar class="paginator-1" #pagingBarLinks pageLinkCount="5" [firstLast]="false" [initialPage]="currentPage" [pageSize]="1" [total]="totalPages" (change)="changePage($event)">
     <span>Currently on page: {{currentPage}} of {{totalPages}} ({{totalResults}} results)</span>
   </td-paging-bar>

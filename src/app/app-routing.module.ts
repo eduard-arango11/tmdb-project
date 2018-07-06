@@ -32,7 +32,7 @@ const routes: Routes = [
     component: MoviesListComponent
   },
   {
-    path: 'people/:type',
+    path: 'people/:type/:page',
     component: PeopleListComponent
   }
 ];

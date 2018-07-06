@@ -1,3 +1,17 @@
+.main{
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .paginator-1{
+        align-self: flex-start;
+    }
+    
+    .paginator-2{
+        align-self: flex-end;
+    }
+}
+
 .images-tab{
     width: 100%;
     display: flex;

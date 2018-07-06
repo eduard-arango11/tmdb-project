@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import {IPageChangeEvent} from '@covalent/core/paging';
 import { MovieService } from '../../../services/movie.service';
@@ -16,13 +16,11 @@ export class MoviesListComponent implements OnInit {
   private title:string;
 
   //Paginator
-  currentPage:number = 1;
-  currentCategory:string;
+  private currentPage:number = 1;
+  private currentCategory:string;
   private totalResults:number;
   private totalPages:number;
-  eventLinks: IPageChangeEvent;
-  firstLast = true;
-  page=1;
+  private eventLinks: IPageChangeEvent;
 
   private listType:string;
   private sub: any; 
@@ -63,8 +61,6 @@ export class MoviesListComponent implements OnInit {
   }
 
   getMoviesActualPage() {
-    this.currentPage = +this.route.snapshot.paramMap.get('page');
-    this.currentCategory = this.route.snapshot.paramMap.get('category');
     switch (this.currentCategory) {
       case 'now_playing':
         this.movieService.getNowPlayingMovies(this.currentPage).subscribe(
@@ -125,12 +121,5 @@ export class MoviesListComponent implements OnInit {
       default:
         break;
     }
-  }
-
-  changeLinks(event: IPageChangeEvent): void {
-    this.eventLinks = event;
-    this.page = this.eventLinks.page;
-    this.router.navigate(['/movies',this.currentCategory, this.page]);
-    this.getMoviesActualPage();
   }
 }

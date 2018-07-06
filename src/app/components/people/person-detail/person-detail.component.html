@@ -14,10 +14,11 @@
     <div class="information">
       <mat-card-header>
         <mat-card-title> {{person.name}} </mat-card-title>
-        <mat-card-subtitle>{{ person.birthday | date}} ({{ person.place_of_birth }}) - {{person.deathday | date}}</mat-card-subtitle>
+        <mat-card-subtitle *ngIf ='person.birthday'> Born: {{ person.birthday | date}} ({{ person.place_of_birth }})</mat-card-subtitle>
+        <mat-card-subtitle *ngIf ='person.deathday'> Died: {{person.deathday | date}}</mat-card-subtitle>
       </mat-card-header>
       <mat-divider [inset]="true"></mat-divider>
-      <h2>Biography</h2>
+      <h2 *ngIf ='person.biography'>Biography</h2>
       <p align="justify">
         {{person.biography}}
       </p>

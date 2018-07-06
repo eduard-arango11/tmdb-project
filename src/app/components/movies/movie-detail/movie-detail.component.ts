@@ -17,7 +17,8 @@ export class MovieDetailComponent implements OnInit {
   private movieVideos:Array<any>;
   
   private movieTailer;
-  private safeURL;
+  private safeURLTrailer;
+  private safeVideosUrls:Array<any>;
   private sub: any;
 
   constructor(
@@ -26,6 +27,7 @@ export class MovieDetailComponent implements OnInit {
     private sanitizer: DomSanitizer
   ) { 
     this.movieVideos = new Array<any>();
+    this.safeVideosUrls = new Array<any>();
   }
 
   ngOnInit() {
@@ -54,8 +56,15 @@ export class MovieDetailComponent implements OnInit {
         this.movieService.getMovieVideos(id).subscribe(
           (data) => {
             this.movieVideos= data;
-            this.getTrailer(this.movieVideos);;
-            this.safeURL = this.sanitizer.bypassSecurityTrustResourceUrl("https://www.youtube.com/embed/" + this.movieTailer.key + "?rel=0");
+            this.getTrailer(this.movieVideos);
+            if(this.movieTailer){
+              this.safeURLTrailer = this.sanitizer.bypassSecurityTrustResourceUrl("https://www.youtube.com/embed/" + this.movieTailer.key + "?rel=0");
+            }
+
+            this.movieVideos.forEach(element => {
+              let url = this.sanitizer.bypassSecurityTrustResourceUrl("https://www.youtube.com/embed/" + element.key + "?rel=0");
+              this.safeVideosUrls.push(url);
+            });
           }
         );
 
@@ -68,8 +77,6 @@ export class MovieDetailComponent implements OnInit {
     for(let element of videos){
       if (element.type === 'Trailer') {
         this.movieTailer = element;
-      } else {
-        this.movieTailer = false;
       }
     }
   }

@@ -71,9 +71,9 @@
           </p>
       </div>
       <div class="trailer-and-more">
-        <div *ngIf="movieTailer" class="image-in-tab">
+        <div *ngIf="safeURLTrailer" class="image-in-tab">
           <!--iframe  width="600" height="400" [src]="getSafeTrailer(movieTailer.key)"></iframe-->
-          <iframe [src]="safeURL" frameborder="0" width="600" height="400" ></iframe>
+          <iframe [src]="safeURLTrailer" frameborder="0" width="600" height="400" ></iframe>
         </div>
         <mat-tab-group mat-stretch-tabs="always" class="production-tabs">
         <mat-tab label="Production Companies">
@@ -122,8 +122,8 @@
         </mat-tab>
         <mat-tab label="Videos">
           <div class="images-tab" >
-              <div *ngFor="let video of movieVideos" class="image-in-tab">
-                  <iframe [src]="getSafeVideo(video.key)" width="500" height="350"></iframe>
+              <div *ngFor="let video of movieVideos, let i=index" class="image-in-tab">
+                  <iframe [src]="safeVideosUrls[i]" frameborder="0" width="500" height="350" ></iframe>
               </div>
           </div>
         </mat-tab>

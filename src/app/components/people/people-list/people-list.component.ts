@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import {IPageChangeEvent} from '@covalent/core/paging';
 import { PeopleService } from '../../../services/people.service';
 
 @Component({
@@ -9,26 +10,46 @@ import { PeopleService } from '../../../services/people.service';
 })
 export class PeopleListComponent implements OnInit {
 
-  private listType:string;
+  private currentType:string;
   private people;
   private sub: any;
 
+  private currentPage;
+  private totalResults:number;
+  private totalPages:number;
+  private eventLinks: IPageChangeEvent;
+
   constructor(
     private peopleService: PeopleService,
+    public router: Router,
     private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
     this.sub = this.route.params.subscribe(
       params => {
-        this.listType = params['type'];
-        this.peopleService.getPopularPeople().subscribe(
-          (data) => {
-            this.people= data;
-          }
-        );
+        this.currentType = params['type'];
+        this.currentPage = params['page'];
+        this.getPeopleActualPage();
       }
     )
+  }
+
+  changePage(event: IPageChangeEvent): void {
+    this.currentPage = event.page;
+    this.router.navigate(['/people',this.currentType, this.currentPage]);
+    this.getPeopleActualPage();
+
+  }
+
+  getPeopleActualPage(){
+    this.peopleService.getPopularPeople(this.currentPage).subscribe(
+      (data) => {
+        this.people= data;
+        this.totalPages = this.people[0].total_pages;
+        this.totalResults = this.people[0].total_results;
+      }
+    );
   }
 
 }

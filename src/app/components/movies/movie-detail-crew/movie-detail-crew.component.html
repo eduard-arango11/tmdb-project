@@ -10,7 +10,7 @@
     <div *ngFor="let person of movieCrew">
       <div *ngIf = 'selected === person.department || selected === "All"; then trueCase'></div>
       <ng-template #trueCase>
-        <mat-list-item>
+        <mat-list-item [routerLink]="['/person/detail', person.id]">
           <img *ngIf = 'person.profile_path !== null' matListAvatar src="https://image.tmdb.org/t/p/w45/{{person.profile_path}}">
           <img *ngIf = 'person.profile_path === null' matListAvatar src="assets/noimg.png">
           <h3 matLine> {{person.name}} </h3>
