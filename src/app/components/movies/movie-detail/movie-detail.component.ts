@@ -1,7 +1,7 @@
 import { Component, OnInit, SimpleChanges } from '@angular/core';
 import { MovieService } from '../../../services/movie.service';
 import { ActivatedRoute } from '@angular/router';
-import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import { DomSanitizer, SafeUrl, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-movie-detail',
@@ -17,12 +17,13 @@ export class MovieDetailComponent implements OnInit {
   private movieVideos:Array<any>;
   
   private movieTailer;
+  private safeURL;
   private sub: any;
 
   constructor(
     private movieService: MovieService,
     private route: ActivatedRoute,
-    private sanitizer: DomSanitizer,
+    private sanitizer: DomSanitizer
   ) { 
     this.movieVideos = new Array<any>();
   }
@@ -53,31 +54,15 @@ export class MovieDetailComponent implements OnInit {
         this.movieService.getMovieVideos(id).subscribe(
           (data) => {
             this.movieVideos= data;
-            this.getTrailer(this.movieVideos);
+            this.getTrailer(this.movieVideos);;
+            this.safeURL = this.sanitizer.bypassSecurityTrustResourceUrl("https://www.youtube.com/embed/" + this.movieTailer.key + "?rel=0");
           }
         );
 
-        
         //window.scrollTo(0, 0);
       }
     )
   }
-
-  /*ngOnChanges(changes: SimpleChanges){
-    this.sub = this.route.params.subscribe(
-      params => {
-        this.movieId = +params['id'];
-        let id:number = +params['id'];
-    this.movieService.getMovieVideos(id).subscribe(
-      (data) => {
-        this.movieVideos= data;
-        this.getTrailer(this.movieVideos);
-      }
-    );
-    }
-    );
-  
-  }*/
 
   getTrailer(videos:Array<any>){
     for(let element of videos){
@@ -87,11 +72,6 @@ export class MovieDetailComponent implements OnInit {
         this.movieTailer = false;
       }
     }
-  }
-
-  getSafeTrailer(key: string): any {
-    //return this.sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/' + key + '?autoplay=1&rel=0');
-    return this.sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/' + key + '?&rel=0');
   }
 
   getSafeVideo(key: string): any {

@@ -6,8 +6,9 @@ import { FormsModule, ReactiveFormsModule}   from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 // Teradata Covalent imports
-//import { CovalentLayoutModule } from '@covalent/core/layout';
-//import { CovalentStepsModule  } from '@covalent/core/steps';
+import { CovalentLayoutModule } from '@covalent/core/layout';
+import { CovalentStepsModule  } from '@covalent/core/steps';
+import { CovalentPagingModule } from '@covalent/core/paging';
 
 // Material & flex imports
 import {FlexLayoutModule} from '@angular/flex-layout';
@@ -21,9 +22,10 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatChipsModule} from '@angular/material/chips';
-import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatSelectModule} from '@angular/material/select';
+import {MatPaginatorModule} from '@angular/material/paginator';
+
 
 // Components imports
 import { AppRoutingModule } from './app-routing.module';
@@ -69,8 +71,8 @@ import { PeopleListComponent } from './components/people/people-list/people-list
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    //CovalentLayoutModule,
-    //CovalentStepsModule,
+    CovalentLayoutModule,
+    CovalentStepsModule,
     FlexLayoutModule,
     MatButtonModule,
     MatCardModule,
@@ -82,10 +84,10 @@ import { PeopleListComponent } from './components/people/people-list/people-list
     MatListModule,
     MatToolbarModule,
     MatChipsModule,
-    MatAutocompleteModule,
     MatExpansionModule,
     MatSelectModule,
-    LayoutModule
+    MatPaginatorModule,
+    CovalentPagingModule
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -12,9 +12,9 @@ export class MovieService {
 
   constructor(private http: HttpClient) { }
 
-  getTopRatedMovies () {
+  getTopRatedMovies (page:number) {
     return this.http
-      .get(this.baseUrl + "top_rated" +this.apiKey)
+      .get(this.baseUrl + "top_rated" +this.apiKey + '&page=' + page)
       .pipe(
         map(
           (response: any) => {
@@ -27,7 +27,9 @@ export class MovieService {
                 vote_average: item.vote_average,
                 popularity: item.popularity,
                 overview: item.overview,
-                release_date: item.release_date
+                release_date: item.release_date,
+                total_pages: response.total_pages,
+                total_results: response.total_results
               }
             });
           }
@@ -35,9 +37,9 @@ export class MovieService {
       );
   }
   
-  getPopularMovies () {
+  getPopularMovies (page:number) {
     return this.http
-      .get(this.baseUrl + "popular" +this.apiKey)
+      .get(this.baseUrl + "popular" +this.apiKey + '&page=' + page)
       .pipe(
         map(
           (response: any) => {
@@ -50,7 +52,9 @@ export class MovieService {
                 vote_average: item.vote_average,
                 popularity: item.popularity,
                 overview: item.overview,
-                release_date: item.release_date
+                release_date: item.release_date,
+                total_pages: response.total_pages,
+                total_results: response.total_results
               }
             });
           }
@@ -58,9 +62,9 @@ export class MovieService {
       );
   }
 
-  getNowPlayingMovies () {
+  getNowPlayingMovies (page:number) {
     return this.http
-      .get(this.baseUrl + "now_playing" +this.apiKey)
+      .get(this.baseUrl + "now_playing" +this.apiKey + '&page=' + page)
       .pipe(
         map(
           (response: any) => {
@@ -73,7 +77,9 @@ export class MovieService {
                 vote_average: item.vote_average,
                 popularity: item.popularity,
                 overview: item.overview,
-                release_date: item.release_date
+                release_date: item.release_date,
+                total_pages: response.total_pages,
+                total_results: response.total_results
               }
             });
           }
@@ -81,9 +87,9 @@ export class MovieService {
       );
   }
 
-  getUpcomingMovies () {
+  getUpcomingMovies (page:number) {
     return this.http
-      .get(this.baseUrl + "upcoming" +this.apiKey)
+      .get(this.baseUrl + "upcoming" +this.apiKey + '&page=' + page)
       .pipe(
         map(
           (response: any) => {
@@ -96,7 +102,9 @@ export class MovieService {
                 vote_average: item.vote_average,
                 popularity: item.popularity,
                 overview: item.overview,
-                release_date: item.release_date
+                release_date: item.release_date,
+                total_pages: response.total_pages,
+                total_results: response.total_results
               }
             });
           }

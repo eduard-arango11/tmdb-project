@@ -28,7 +28,7 @@ const routes: Routes = [
     component: SearchResultsComponent
   },
   {
-    path: 'movies/:category',
+    path: 'movies/:category/:page',
     component: MoviesListComponent
   },
   {
