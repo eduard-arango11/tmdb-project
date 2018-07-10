@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import {MatPaginator} from '@angular/material/paginator';
 import { ActivatedRoute, Router } from '@angular/router';
-import {IPageChangeEvent} from '@covalent/core/paging';
 import { PeopleService } from '../../../services/people.service';
 
 @Component({
@@ -9,15 +9,13 @@ import { PeopleService } from '../../../services/people.service';
   styleUrls: ['./people-list.component.scss']
 })
 export class PeopleListComponent implements OnInit {
-
-  public currentType:string;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
   public people;
   public sub: any;
 
   public currentPage;
   public totalResults:number;
   public totalPages:number;
-  public eventLinks: IPageChangeEvent;
 
   constructor(
     private peopleService: PeopleService,
@@ -28,22 +26,20 @@ export class PeopleListComponent implements OnInit {
   ngOnInit() {
     this.sub = this.route.params.subscribe(
       params => {
-        this.currentType = params['type'];
-        this.currentPage = params['page'];
-        this.getPeopleActualPage();
+        this.currentPage = 1;
+        this.paginator.firstPage();
+        this.getPeopleActualPage(this.currentPage);
       }
     )
   }
 
-  changePage(event: IPageChangeEvent): void {
-    this.currentPage = event.page;
-    this.router.navigate(['/people',this.currentType, this.currentPage]);
-    this.getPeopleActualPage();
-
+  changePage(event){
+    this.currentPage = event.pageIndex + 1;
+    this.getPeopleActualPage(this.currentPage);
   }
 
-  getPeopleActualPage(){
-    this.peopleService.getPopularPeople(this.currentPage).subscribe(
+  getPeopleActualPage(page:number){
+    this.peopleService.getPopularPeople(page).subscribe(
       (data) => {
         this.people= data;
         this.totalPages = this.people[0].total_pages;

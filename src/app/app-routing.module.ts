@@ -13,7 +13,7 @@ import { PeopleListComponent } from './components/people/people-list/people-list
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'movies/now_playing/1',
+    redirectTo: 'movies/now_playing',
     pathMatch: 'full'
   },
   {
@@ -29,11 +29,11 @@ const routes: Routes = [
     component: SearchResultsComponent
   },
   {
-    path: 'movies/:category/:page',
+    path: 'movies/:category',
     component: MoviesListComponent
   },
   {
-    path: 'people/:type/:page',
+    path: 'people/popular',
     component: PeopleListComponent
   }
 ];

@@ -1,6 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import {IPageChangeEvent} from '@covalent/core/paging';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import {MatPaginator} from '@angular/material/paginator';
 import { MovieService } from '../../../services/movie.service';
 import { GenresService } from '../../../services/genres.service';
 
@@ -10,25 +10,23 @@ import { GenresService } from '../../../services/genres.service';
   styleUrls: ['./movies-list.component.scss']
 })
 export class MoviesListComponent implements OnInit {
+  @ViewChild(MatPaginator) paginator: MatPaginator;
   public moviesList: any[];
   public allMoviesGenres: any[];
   public isTheMouseOverPosterArray:Array<boolean>;
   public title:string;
 
   //Paginator
-  public currentPage:number = 1;
+  public currentPage:number;
   public currentCategory:string;
   public totalResults:number;
   public totalPages:number;
-  public eventLinks: IPageChangeEvent;
 
-  public listType:string;
   public sub: any; 
 
   constructor(
     private movieService: MovieService,
     private genresService: GenresService,
-    public router: Router,
     private route: ActivatedRoute
   ) {
     this.isTheMouseOverPosterArray = new Array<boolean>();
@@ -38,8 +36,9 @@ export class MoviesListComponent implements OnInit {
     this.sub = this.route.params.subscribe(
       params => {
         this.currentCategory = params['category'];
-        this.currentPage = params['page'];
-        this.getMoviesActualPage();
+        this.currentPage = 1;
+        this.paginator.firstPage(); //when the user select a category of movies (popular, upcoming, etc.) the function onInit is called and the paginator starts in the first page.
+        this.getMoviesActualPage(this.currentCategory,this.currentPage); 
       })
   }
 
@@ -51,19 +50,15 @@ export class MoviesListComponent implements OnInit {
     }
   }
 
-  //events for paginator
-
-  changePage(event: IPageChangeEvent): void {
-    this.currentPage = event.page;
-    this.router.navigate(['/movies',this.currentCategory, this.currentPage]);
-    this.getMoviesActualPage();
-
+  changePage(event){
+    this.currentPage = event.pageIndex + 1;
+    this.getMoviesActualPage(this.currentCategory,this.currentPage);
   }
 
-  getMoviesActualPage() {
-    switch (this.currentCategory) {
+  getMoviesActualPage(category:string,page:number) {
+    switch (category) {
       case 'now_playing':
-        this.movieService.getNowPlayingMovies(this.currentPage).subscribe(
+        this.movieService.getNowPlayingMovies(page).subscribe(
           (data) => {
             this.moviesList = data;
             this.totalPages = this.moviesList[0].total_pages;
@@ -77,7 +72,7 @@ export class MoviesListComponent implements OnInit {
         this.title="Movies in Theatres";
         break;
       case 'top_rated':
-        this.movieService.getTopRatedMovies(this.currentPage).subscribe(
+        this.movieService.getTopRatedMovies(page).subscribe(
           (data) => {
             this.moviesList = data;
             this.totalPages = this.moviesList[0].total_pages;
@@ -91,7 +86,7 @@ export class MoviesListComponent implements OnInit {
         this.title="Top Rated Movies";
         break;
       case 'popular':
-        this.movieService.getPopularMovies(this.currentPage).subscribe(
+        this.movieService.getPopularMovies(page).subscribe(
           (data) => {
             this.moviesList = data;
             this.totalPages = this.moviesList[0].total_pages;
@@ -105,7 +100,7 @@ export class MoviesListComponent implements OnInit {
         this.title="Popular Movies";
         break;
       case 'upcoming':
-        this.movieService.getUpcomingMovies(this.currentPage).subscribe(
+        this.movieService.getUpcomingMovies(page).subscribe(
           (data) => {
             this.moviesList = data;
             this.totalPages = this.moviesList[0].total_pages;

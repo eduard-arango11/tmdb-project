@@ -5,11 +5,11 @@
     fixedInViewport="true">
     <mat-toolbar color="primary" class="fixed-header">Menu</mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item (click)="drawer.close()" [routerLink]="['/movies', 'now_playing', '1']" routerLinkActive="on">Movies in theatres</a>
-      <a mat-list-item (click)="drawer.close()" [routerLink]="['/movies', 'top_rated', '1']" routerLinkActive="on">Top rated movies</a>
-      <a mat-list-item (click)="drawer.close()" [routerLink]="['/movies', 'popular', '1']" routerLinkActive="on">Popular movies</a>
-      <a mat-list-item (click)="drawer.close()" [routerLink]="['/movies', 'upcoming', '1']" routerLinkActive="on">Upcoming movies</a>
-      <a mat-list-item (click)="drawer.close()" [routerLink]="['/people', 'popular', '1']">Popuplar people</a>
+      <a mat-list-item (click)="drawer.close()" [routerLink]="['/movies', 'now_playing']" routerLinkActive="on">Movies in theatres</a>
+      <a mat-list-item (click)="drawer.close()" [routerLink]="['/movies', 'top_rated']" routerLinkActive="on">Top rated movies</a>
+      <a mat-list-item (click)="drawer.close()" [routerLink]="['/movies', 'popular']" routerLinkActive="on">Popular movies</a>
+      <a mat-list-item (click)="drawer.close()" [routerLink]="['/movies', 'upcoming']" routerLinkActive="on">Upcoming movies</a>
+      <a mat-list-item (click)="drawer.close()" [routerLink]="['/people/popular']">Popuplar people</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -21,7 +21,7 @@
         (click)="drawer.toggle()">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span [routerLink]="['/movies', 'now_playing', '1']" >Movies Application</span>
+      <span [routerLink]="['/movies', 'now_playing']" >Movies Application</span>
       <span class="example-spacer"></span>
       <app-search></app-search>
     </mat-toolbar>

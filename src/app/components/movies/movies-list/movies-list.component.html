@@ -1,8 +1,5 @@
 <div class="list-movies">
   <h1>{{title}}</h1>
-  <td-paging-bar class="paginator-1" #pagingBarLinks pageLinkCount="5" [firstLast]="false" [initialPage]="currentPage" [pageSize]="1" [total]="totalPages" (change)="changePage($event)">
-    <span>Currently on page: {{currentPage}} of {{totalPages}} ({{totalResults}} results)</span>
-  </td-paging-bar>
   <div class="movies-grid">
     <div *ngFor="let movie of moviesList, let i=index"
     class='poster'
@@ -24,7 +21,5 @@
       </div>
     </div>
   </div>
-  <td-paging-bar class="paginator-2" #pagingBarLinks pageLinkCount="5" [firstLast]="false" [initialPage]="currentPage" [pageSize]="1" [total]="totalPages" (change)="changePage($event)">
-    <span hide-xs>Currently on page: {{currentPage}} of {{totalPages}} ({{totalResults}} results)</span>
-  </td-paging-bar>
+  <mat-paginator #paginator [length]="totalResults" hidePageSize="true" showFirstLastButtons="true" (page)="changePage($event)" [pageSize]="20" ></mat-paginator>
 </div>
