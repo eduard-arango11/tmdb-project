@@ -1,0 +1,26 @@
+<mat-accordion>
+  <mat-expansion-panel [expanded]="true">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Backdrops
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div class="images-tab" >
+        <div *ngFor="let image of movieBackdropsImages" class="image-in-tab">
+          <img src="https://image.tmdb.org/t/p/w300/{{image.file_path}}">
+        </div>
+    </div>
+  </mat-expansion-panel>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Posters
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div class="images-tab" >
+        <div *ngFor="let image of moviePostersImages" class="image-in-tab">
+          <img src="https://image.tmdb.org/t/p/w185/{{image.file_path}}">
+        </div>
+    </div>
+  </mat-expansion-panel>
+</mat-accordion>

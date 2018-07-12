@@ -11,7 +11,7 @@ export class MovieDetailRecommendationsComponent implements OnInit {
   public movieRecommendations;
 
   @Input() public movieId;
-  @Output() newMovieId = new EventEmitter();
+  @Output() newMovieId:EventEmitter<any> = new EventEmitter();
 
   constructor(private movieService: MovieService) {
   }

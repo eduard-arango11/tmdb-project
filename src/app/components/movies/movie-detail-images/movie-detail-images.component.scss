@@ -1,0 +1,10 @@
+.images-tab{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    
+    .image-in-tab{
+        margin: 10px;
+    }
+}

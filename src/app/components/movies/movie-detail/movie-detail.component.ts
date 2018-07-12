@@ -1,7 +1,7 @@
 import { Component, OnInit, SimpleChanges } from '@angular/core';
-import { MovieService } from '../../../services/movie.service';
 import { ActivatedRoute } from '@angular/router';
-import { DomSanitizer, SafeUrl, SafeResourceUrl } from '@angular/platform-browser';
+import { DomSanitizer } from '@angular/platform-browser';
+import { MovieService } from '../../../services/movie.service';
 
 @Component({
   selector: 'app-movie-detail',
@@ -12,13 +12,10 @@ export class MovieDetailComponent implements OnInit {
 
   public movieId;
   public movie;
-  public movieBackdropsImages;
-  public moviePostersImages;
   public movieVideos:Array<any>;
   
   public movieTailer;
   public safeURLTrailer;
-  public safeVideosUrls:Array<any>;
   public sub: any;
 
   constructor(
@@ -27,7 +24,6 @@ export class MovieDetailComponent implements OnInit {
     private sanitizer: DomSanitizer
   ) { 
     this.movieVideos = new Array<any>();
-    this.safeVideosUrls = new Array<any>();
   }
 
   ngOnInit() {
@@ -41,18 +37,6 @@ export class MovieDetailComponent implements OnInit {
           }
         );
 
-        this.movieService.getMovieImagesBackdrops(id).subscribe(
-          (data) => {
-            this.movieBackdropsImages= data;
-          }
-        );
-        
-        this.movieService.getMovieImagesPosters(id).subscribe(
-          (data) => {
-            this.moviePostersImages= data;
-          }
-        );
-
         this.movieService.getMovieVideos(id).subscribe(
           (data) => {
             this.movieVideos= data;
@@ -60,11 +44,6 @@ export class MovieDetailComponent implements OnInit {
             if(this.movieTailer){
               this.safeURLTrailer = this.sanitizer.bypassSecurityTrustResourceUrl("https://www.youtube.com/embed/" + this.movieTailer.key + "?rel=0");
             }
-
-            this.movieVideos.forEach(element => {
-              let url = this.sanitizer.bypassSecurityTrustResourceUrl("https://www.youtube.com/embed/" + element.key + "?rel=0");
-              this.safeVideosUrls.push(url);
-            });
           }
         );
 
@@ -74,6 +53,7 @@ export class MovieDetailComponent implements OnInit {
   }
 
   getTrailer(videos:Array<any>){
+    this.movieTailer = null; // if don't assign null, when user clic a movie in recommendations the new movie can come without trailer and movieTrailer would stay with the trailer of the past movie.
     for(let element of videos){
       if (element.type === 'Trailer') {
         this.movieTailer = element;
@@ -81,12 +61,7 @@ export class MovieDetailComponent implements OnInit {
     }
   }
 
-  getSafeVideo(key: string): any {
-    return this.sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/' + key);
-  }
-
   ListenChild(event){
     this.movieId = event;
-    console.log(this.movieId, "movieId listened from child");
   }
 }
