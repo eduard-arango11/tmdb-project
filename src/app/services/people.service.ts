@@ -10,6 +10,7 @@ export class PeopleService {
   public baseUrl: string = "https://api.themoviedb.org/3/person/";
   public apiKey: string = "?api_key=0ca9ba5dc7030b0c10b24d60533cb44d";
 
+
   constructor(private http: HttpClient) { }
 
   getPersonDetail(idPerson:number){

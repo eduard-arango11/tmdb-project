@@ -30,6 +30,7 @@ export class MoviesListComponent implements OnInit {
     private route: ActivatedRoute
   ) {
     this.isTheMouseOverPosterArray = new Array<boolean>();
+    this.allMoviesGenres = new Array<any>();
    }
 
   ngOnInit() {
@@ -38,7 +39,7 @@ export class MoviesListComponent implements OnInit {
         this.currentCategory = params['category'];
         this.currentPage = 1;
         this.paginator.firstPage(); //when the user select a category of movies (popular, upcoming, etc.) the function onInit is called and the paginator starts in the first page.
-        this.getMoviesActualPage(this.currentCategory,this.currentPage); 
+        this.getMoviesList(this.currentCategory,this.currentPage); 
       })
   }
 
@@ -52,10 +53,10 @@ export class MoviesListComponent implements OnInit {
 
   changePage(event){
     this.currentPage = event.pageIndex + 1;
-    this.getMoviesActualPage(this.currentCategory,this.currentPage);
+    this.getMoviesList(this.currentCategory,this.currentPage);
   }
 
-  getMoviesActualPage(category:string,page:number) {
+  getMoviesList(category:string,page:number) {
     switch (category) {
       case 'now_playing':
         this.movieService.getNowPlayingMovies(page).subscribe(
@@ -114,7 +115,34 @@ export class MoviesListComponent implements OnInit {
         this.title="Upcoming Movies in Theatres";
         break;
       default:
+        let genreId
+        this.genresService.getAllMoviesGenres().subscribe(
+          (data) => {
+            this.allMoviesGenres = data;
+            //the code below is for get the genre id of the genre name in the url
+            this.allMoviesGenres.forEach(element => {
+              if (element.name === category) {
+                genreId = element.id;
+              }
+            });
+            
+            //the code below is for get all the movies of the genre in the url
+            this.movieService.getMoviesOfGenre(genreId,page).subscribe(
+              (data) => {
+                this.moviesList = data;
+                this.totalPages = this.moviesList[0].total_pages;
+                this.totalResults = this.moviesList[0].total_results;
+        
+                this.moviesList.forEach(element => {
+                  this.isTheMouseOverPosterArray.push(false);
+                });
+              }
+            );
+            this.title=category + " Movies";
+          }
+        );
         break;
     }
   }
 }
+

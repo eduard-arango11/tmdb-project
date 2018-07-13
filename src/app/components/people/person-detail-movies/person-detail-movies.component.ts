@@ -17,7 +17,7 @@ export class PersonDetailMoviesComponent implements OnInit {
   ngOnInit() {
     this.peopleService.getPersonMovies(this.personId).subscribe(
       (data) => {
-        this.personMovies= data;
+        this.personMovies= data.sort((a: any, b: any) => b['popularity'] - a['popularity']);
       }
     );
   }
@@ -25,7 +25,7 @@ export class PersonDetailMoviesComponent implements OnInit {
   ngOnChanges(changes: SimpleChanges) {
     this.peopleService.getPersonMovies(this.personId).subscribe(
       (data) => {
-        this.personMovies= data;
+        this.personMovies= data.sort((a: any, b: any) => b['popularity'] - a['popularity']);
       }
     );
   }

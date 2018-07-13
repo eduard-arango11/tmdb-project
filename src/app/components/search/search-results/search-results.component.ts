@@ -44,7 +44,7 @@ export class SearchResultsComponent implements OnInit {
         if (query !== "") {
           this.searchService.searchPerson(query).subscribe(
             (data) => {
-              this.peopleFound= data;
+              this.peopleFound= data.sort((a: any, b: any) => b['popularity'] - a['popularity']);
               this.peopleFound.forEach(element => {
                 this.isTheMouseOverPosterArray.push(false);
               });

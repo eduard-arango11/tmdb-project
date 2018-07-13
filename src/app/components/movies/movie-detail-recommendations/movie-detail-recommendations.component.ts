@@ -17,18 +17,18 @@ export class MovieDetailRecommendationsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.movieService.getMovieRecommendations(this.movieId).subscribe(
-      (data) => {
-        this.movieRecommendations= data;
-      }
-    );
+    this.serviceCall(this.movieId);
   }
 
   chageMovie(id) {
     this.newMovieId.emit(id);
+    this.serviceCall(id);
+  }
+
+  serviceCall(id:number){
     this.movieService.getMovieRecommendations(id).subscribe(
       (data) => {
-        this.movieRecommendations= data;
+        this.movieRecommendations= data.sort((a: any, b: any) => b['popularity'] - a['popularity']);
       }
     );
   }

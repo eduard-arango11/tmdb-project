@@ -9,6 +9,8 @@ export class MovieService {
 
   public baseUrl: string = "https://api.themoviedb.org/3/movie/";
   public apiKey: string = "?api_key=0ca9ba5dc7030b0c10b24d60533cb44d";
+  public baseUrlDiscover:string = "https://api.themoviedb.org/3/discover/movie";
+
 
   constructor(private http: HttpClient) { }
 
@@ -110,6 +112,31 @@ export class MovieService {
           }
         )
       );
+  }
+
+  getMoviesOfGenre(genre:number, page:number){
+    return this.http
+    .get(this.baseUrlDiscover +this.apiKey + "&sort_by=popularity.desc&page="+ page +"&with_genres=" + genre)
+    .pipe(
+      map(
+        (response: any) => {
+          return response.results.map((item)=>{
+            return {
+              id: item.id,
+              title: item.title,
+              poster_path: item.poster_path,
+              vote_count: item.vote_count,
+              vote_average: item.vote_average,
+              popularity: item.popularity,
+              overview: item.overview,
+              release_date: item.release_date,
+              total_pages: response.total_pages,
+              total_results: response.total_results
+            }
+          });
+        }
+      )
+    );
   }
 
   getMovieRecommendations (idMovie:number) {

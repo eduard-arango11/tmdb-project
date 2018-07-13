@@ -3,7 +3,7 @@
       <mat-card-title class="movie-title"> {{movie.title}} </mat-card-title>
       <mat-card-subtitle>
         <mat-chip-list>
-          <mat-chip *ngFor="let genre of movie.genres" color="accent" selected="true">
+          <mat-chip *ngFor="let genre of movie.genres" color="accent" selected="true" [routerLink]="['/movies', genre.name]">
             {{genre.name}}
           </mat-chip> 
         </mat-chip-list>

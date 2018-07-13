@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { GenresService } from '../../services/genres.service';
 
 @Component({
   selector: 'main-nav',
@@ -7,9 +8,22 @@ import { Router } from '@angular/router';
   styleUrls: ['./main-nav.component.css']
 })
 export class MainNavComponent {
-    
+  
+  public allMoviesGenres: any[];
+  public sub: any;
+
   constructor(
-    private router: Router
-  ) {}
+    private genresService: GenresService
+  ) {
+    this.allMoviesGenres = new Array<any>();
+  }
+
+  ngOnInit() {
+    this.genresService.getAllMoviesGenres().subscribe(
+      (data) => {
+        this.allMoviesGenres= data;
+      }
+    );
+  }
   
 }
