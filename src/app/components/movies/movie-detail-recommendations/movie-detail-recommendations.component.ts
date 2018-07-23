@@ -21,7 +21,7 @@ export class MovieDetailRecommendationsComponent implements OnInit {
   }
 
   chageMovie(id) {
-    this.newMovieId.emit(id);
+    this.newMovieId.emit(id); //the movie id of the remmended movie selected is emited to the movie detail for display the detail of that movie.
     this.serviceCall(id);
   }
 
