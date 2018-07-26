@@ -184,7 +184,8 @@ export class MovieService {
                 status: response.status,
                 budget: response.budget,
                 revenue: response.revenue,
-                runtime: response.runtime
+                runtime: response.runtime,
+                backdrop_path : response.backdrop_path
               }
           }
         )

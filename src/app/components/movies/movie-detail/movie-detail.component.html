@@ -1,13 +1,15 @@
-<mat-card *ngIf="movie" class="main">
-    <mat-card-header class="title">
-      <mat-card-title class="movie-title"> {{movie.title}} </mat-card-title>
-      <mat-card-subtitle>
-        <mat-chip-list>
-          <mat-chip *ngFor="let genre of movie.genres" color="accent" selected="true" [routerLink]="['/movies', genre.name]">
-            {{genre.name}}
-          </mat-chip> 
-        </mat-chip-list>
-      </mat-card-subtitle>
+<div *ngIf="movie" class="main">
+  <mat-card class="details">
+    <div [ngStyle]="{'background-image': 'url(' + backDropImage + ')'}" class="background-image"></div>
+  <mat-card-header class="title">
+    <mat-card-title class="movie-title"> {{movie.title}} </mat-card-title>
+    <mat-card-subtitle>
+      <mat-chip-list>
+        <mat-chip *ngFor="let genre of movie.genres" color="accent" selected="true" [routerLink]="['/movies', genre.name]">
+          {{genre.name}}
+        </mat-chip> 
+      </mat-chip-list>
+    </mat-card-subtitle>
   </mat-card-header>
   <div class="detail-content">
     <div class="detail-left">
@@ -56,7 +58,7 @@
               </li>
               <li class="fix_icon" *ngIf="movie.budget">
                 <div>
-                  <mat-icon>money_off</mat-icon>
+                  <mat-icon color="warn">money_off</mat-icon>
                 </div>
                 <div>Inversion: {{movie.budget | currency}}</div>
               </li>
@@ -77,7 +79,10 @@
         <mat-tab-group mat-stretch-tabs="always" class="production-tabs">
         <mat-tab label="Production Companies">
           <mat-list role="list">
-            <mat-list-item role="listitem" *ngFor="let companie of movie.production_companies">{{companie.name}}</mat-list-item>
+            <mat-list-item role="listitem" *ngFor="let companie of movie.production_companies">
+              <img *ngIf="companie.logo_path" src="https://image.tmdb.org/t/p/w92/{{companie.logo_path}}">
+              <div *ngIf="!companie.logo_path">{{companie.name}}</div>
+            </mat-list-item>
           </mat-list>
         </mat-tab>
         <mat-tab label="Production Countries">
@@ -89,23 +94,24 @@
       </div>
     </div>
   </div>
+  </mat-card>
   <div class="extra-tabs">
-      <mat-tab-group mat-stretch-tabs="always" color="primary">
-        <mat-tab label="Images">
-          <app-movie-detail-images [movieId]="movieId"></app-movie-detail-images>
-        </mat-tab>
-        <mat-tab label="Videos">
-          <app-movie-detail-videos [movieId]="movieId"></app-movie-detail-videos>
-        </mat-tab>
-        <mat-tab label="Cast">
-          <app-movie-detail-cast [movieId]="movieId"></app-movie-detail-cast>
-        </mat-tab>
-        <mat-tab label="Crew">
-          <app-movie-detail-crew [movieId]="movieId"></app-movie-detail-crew>
-        </mat-tab>
-        <mat-tab label="Recommended Movies">
-          <app-movie-detail-recommendations [movieId]="movieId" (newMovieId)="ListenChild($event)"></app-movie-detail-recommendations>
-        </mat-tab>
-      </mat-tab-group>
-    </div>
-</mat-card>
+    <mat-tab-group mat-stretch-tabs="always" color="primary">
+      <mat-tab label="Images">
+        <app-movie-detail-images [movieId]="movieId"></app-movie-detail-images>
+      </mat-tab>
+      <mat-tab label="Videos">
+        <app-movie-detail-videos [movieId]="movieId"></app-movie-detail-videos>
+      </mat-tab>
+      <mat-tab label="Cast">
+        <app-movie-detail-cast [movieId]="movieId"></app-movie-detail-cast>
+      </mat-tab>
+      <mat-tab label="Crew">
+        <app-movie-detail-crew [movieId]="movieId"></app-movie-detail-crew>
+      </mat-tab>
+      <mat-tab label="Recommended Movies">
+        <app-movie-detail-recommendations [movieId]="movieId" (newMovieId)="ListenChild($event)"></app-movie-detail-recommendations>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>

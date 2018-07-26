@@ -18,6 +18,8 @@ export class MovieDetailComponent implements OnInit {
   public safeURLTrailer;
   public sub: any;
 
+  public backDropImage:string;
+
   constructor(
     private movieService: MovieService,
     private route: ActivatedRoute,
@@ -34,6 +36,7 @@ export class MovieDetailComponent implements OnInit {
         this.movieService.getMovieDetail(id).subscribe(
           (data) => {
             this.movie= data;
+            this.backDropImage='https://image.tmdb.org/t/p/w1280'+ this.movie.backdrop_path;
           }
         );
 
