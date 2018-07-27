@@ -5,35 +5,40 @@
             <mat-tab *ngIf="moviesFound.length !== 0">
                 <ng-template mat-tab-label>
                 <mat-icon class="tab-icon">movie</mat-icon>
-                Movies ({{moviesFound.length}})
+                Movies ({{moviesFound[0].total_results}})
                 </ng-template>
                 <div class="movies-grid">
                     <div *ngFor="let movie of moviesFound, let i=index"
                     class="poster"
                     [routerLink]="['/movie/detail', movie.id]"
-                    (mouseover)="eventMouse(i)"
-                    (mouseout)="eventMouse(i)"
                     >
                         <div *ngIf = 'movie.poster_path !== null; then trueCase else falseCase'></div>
                         <ng-template #trueCase>
-                        <img [hidden]='isTheMouseOverPosterArray[i]' src="https://image.tmdb.org/t/p/w300/{{movie.poster_path}}" >
+                        <img src="https://image.tmdb.org/t/p/w300/{{movie.poster_path}}" >
                         </ng-template>
                         <ng-template #falseCase>
-                            <img [hidden]='isTheMouseOverPosterArray[i]' src="assets/noimg.png" >
+                            <img src="assets/noimg.png" >
                         </ng-template>
                         
-                        <div [hidden]='!isTheMouseOverPosterArray[i]'>
-                        <h2 class="movie-title"> {{movie.title}} ({{movie.release_date | date:'y'}})</h2>
-                        <p class="movie-summary">{{ (movie.overview.length > 300) ? (movie.overview | slice:0:300) + '...' : (movie.overview) }}</p>
+                        <div class="preview">
+                            <h2 class="movie-title"> {{movie.title}} ({{movie.release_date | date:'y'}})</h2>
+                            <p class="movie-summary">{{ (movie.overview.length > 300) ? (movie.overview | slice:0:300) + '...' : (movie.overview) }}</p>
+                            <div class="movie-genres">
+                                <span *ngFor="let id of movie.genre_ids, let i=index">
+                                {{getGenreName(id)}}
+                                <span *ngIf='i !== movie.genre_ids.length - 1 '>&nbsp; | &nbsp;</span>
+                                </span>
+                            </div>
                         </div>
                     </div>
                 </div>
+                <mat-paginator #paginatorMovies [length]="totalResultsMovies" hidePageSize="true" showFirstLastButtons="true" (page)="changePageMovies($event)" [pageSize]="20" [pageIndex]="(currentPageMovies - 1)" ></mat-paginator>
             </mat-tab>
 
             <mat-tab *ngIf="peopleFound.length !== 0">
                 <ng-template mat-tab-label>
                 <mat-icon class="tab-icon">people</mat-icon>
-                People ({{peopleFound.length}})
+                People ({{peopleFound[0].total_results}})
                 </ng-template>
                 <div class="images-tab">
                     <mat-card *ngFor="let person of peopleFound"
@@ -53,6 +58,7 @@
                         <mat-card-title>{{person.name}}</mat-card-title>
                     </mat-card>
                 </div>
+                <mat-paginator #paginatorPeople [length]="totalResultsPeople" hidePageSize="true" showFirstLastButtons="true" (page)="changePagePeople($event)" [pageSize]="20" [pageIndex]="(currentPagePeople - 1)"></mat-paginator>
             </mat-tab>
         </mat-tab-group>
     </ng-template>

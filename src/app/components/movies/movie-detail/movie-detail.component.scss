@@ -2,11 +2,15 @@
     align-self: center;
     .movie-title{
         font-size: 230%;
-
     }
     mat-chip-list{
         display: flex;
         justify-content: center;
+
+        mat-chip:hover{
+            cursor: pointer;
+            background-color: darkblue;
+        }
     }
 }
 
