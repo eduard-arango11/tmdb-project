@@ -1,5 +1,7 @@
 <div class="container">
     <div *ngFor="let image of personImages" class="image">
-      <img src="https://image.tmdb.org/t/p/w300/{{image.file_path}}">
+      <a target="_blank" href="https://image.tmdb.org/t/p/original{{image.file_path}}">
+        <img src="https://image.tmdb.org/t/p/w300/{{image.file_path}}">
+      </a>
     </div>
 </div>

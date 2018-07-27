@@ -9,23 +9,22 @@
     mat-chip-list{
         display: flex;
         justify-content: center;
+
+        mat-chip:hover{
+            cursor: pointer;
+            background-color: darkblue;
+        }
     }
 }
 .details{
     display: flex;
     flex-direction: column;
-    min-height: stretch;
-    //border: solid yellowgreen;
-    //filter: opacity(10) grayscale(10%) contrast(30%);
-    //height:40em; 
-    //background-size:cover;
-    //background-position:50% 50%;
-    //filter: opacity(50%);
-    //background-image: url('https://image.tmdb.org/t/p/original/7c9UVPPiTPltouxRVY6N9uugaVA.jpg');
+    //min-height: stretch;
+    //height: 800px;
 }
 
 .background-image {
-    /*content: '';*/
+    object-fit: fill;
     position: absolute;
     top: 0;
     bottom: 0;

@@ -14,3 +14,12 @@
 .example-icon {
   padding: 0 14px;
 }
+
+.page-title{
+  cursor: pointer;
+}
+
+.page-title:focus {
+  outline: none !important;
+  border: 0 !important;
+}

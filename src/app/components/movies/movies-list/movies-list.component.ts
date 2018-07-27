@@ -13,7 +13,6 @@ export class MoviesListComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   public moviesList: any[];
   public allMoviesGenres: any[];
-  public isTheMouseOverPosterArray:Array<boolean>;
   public title:string;
 
   //Paginator
@@ -29,11 +28,11 @@ export class MoviesListComponent implements OnInit {
     private genresService: GenresService,
     private route: ActivatedRoute
   ) {
-    this.isTheMouseOverPosterArray = new Array<boolean>();
     this.allMoviesGenres = new Array<any>();
    }
 
   ngOnInit() {
+    this.getListOfGenres();
     this.sub = this.route.params.subscribe(
       params => {
         this.currentCategory = params['category'];
@@ -43,17 +42,27 @@ export class MoviesListComponent implements OnInit {
       })
   }
 
-  eventMouse(index:number){
-    if (this.isTheMouseOverPosterArray[index]==false) {
-      this.isTheMouseOverPosterArray[index]=true;
-    } else {
-      this.isTheMouseOverPosterArray[index]=false;
-    }
-  }
-
   changePage(event){
     this.currentPage = event.pageIndex + 1;
     this.getMoviesList(this.currentCategory,this.currentPage);
+  }
+
+  getListOfGenres():void{
+    this.genresService.getAllMoviesGenres().subscribe(
+      (data) => {
+        this.allMoviesGenres = data;
+      }
+    );
+  }
+
+  getGenreName(id:string):string{
+    let genreName;
+    this.allMoviesGenres.forEach(element => {
+      if (element.id === id) {
+        genreName=element.name;
+      }
+    });
+    return genreName;
   }
 
   getMoviesList(category:string,page:number) {
@@ -64,10 +73,6 @@ export class MoviesListComponent implements OnInit {
             this.moviesList = data;
             this.totalPages = this.moviesList[0].total_pages;
             this.totalResults = this.moviesList[0].total_results;
-
-            this.moviesList.forEach(element => {
-              this.isTheMouseOverPosterArray.push(false);
-            });
           }
         );
         this.title="Movies in Theatres";
@@ -78,10 +83,6 @@ export class MoviesListComponent implements OnInit {
             this.moviesList = data;
             this.totalPages = this.moviesList[0].total_pages;
             this.totalResults = this.moviesList[0].total_results;
-
-            this.moviesList.forEach(element => {
-              this.isTheMouseOverPosterArray.push(false);
-            });
           }
         );
         this.title="Top Rated Movies";
@@ -92,10 +93,6 @@ export class MoviesListComponent implements OnInit {
             this.moviesList = data;
             this.totalPages = this.moviesList[0].total_pages;
             this.totalResults = this.moviesList[0].total_results;
-    
-            this.moviesList.forEach(element => {
-              this.isTheMouseOverPosterArray.push(false);
-            });
           }
         );
         this.title="Popular Movies";
@@ -106,10 +103,6 @@ export class MoviesListComponent implements OnInit {
             this.moviesList = data;
             this.totalPages = this.moviesList[0].total_pages;
             this.totalResults = this.moviesList[0].total_results;
-    
-            this.moviesList.forEach(element => {
-              this.isTheMouseOverPosterArray.push(false);
-            });
           }
         );
         this.title="Upcoming Movies in Theatres";
@@ -132,10 +125,6 @@ export class MoviesListComponent implements OnInit {
                 this.moviesList = data;
                 this.totalPages = this.moviesList[0].total_pages;
                 this.totalResults = this.moviesList[0].total_results;
-        
-                this.moviesList.forEach(element => {
-                  this.isTheMouseOverPosterArray.push(false);
-                });
               }
             );
             this.title=category + " Movies";

@@ -30,6 +30,7 @@ export class MovieService {
                 popularity: item.popularity,
                 overview: item.overview,
                 release_date: item.release_date,
+                genre_ids: item.genre_ids,
                 total_pages: response.total_pages,
                 total_results: response.total_results
               }
@@ -55,6 +56,7 @@ export class MovieService {
                 popularity: item.popularity,
                 overview: item.overview,
                 release_date: item.release_date,
+                genre_ids: item.genre_ids,
                 total_pages: response.total_pages,
                 total_results: response.total_results
               }
@@ -80,6 +82,7 @@ export class MovieService {
                 popularity: item.popularity,
                 overview: item.overview,
                 release_date: item.release_date,
+                genre_ids: item.genre_ids,
                 total_pages: response.total_pages,
                 total_results: response.total_results
               }
@@ -105,6 +108,7 @@ export class MovieService {
                 popularity: item.popularity,
                 overview: item.overview,
                 release_date: item.release_date,
+                genre_ids: item.genre_ids,
                 total_pages: response.total_pages,
                 total_results: response.total_results
               }
@@ -130,6 +134,7 @@ export class MovieService {
               popularity: item.popularity,
               overview: item.overview,
               release_date: item.release_date,
+              genre_ids: item.genre_ids,
               total_pages: response.total_pages,
               total_results: response.total_results
             }

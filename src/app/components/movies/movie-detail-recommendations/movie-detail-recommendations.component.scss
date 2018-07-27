@@ -11,6 +11,10 @@ mat-card{
     }
 }
 
+mat-card:hover{
+    cursor: pointer;
+}
+
 .fix_icon{
     display: inline-flex;
     align-items: center;

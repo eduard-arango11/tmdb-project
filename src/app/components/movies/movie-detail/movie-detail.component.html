@@ -24,9 +24,6 @@
               <img src="assets/noimg.png" >
             </div>
         </ng-template>
-      <!--div *ngIf="movie.poster_path">
-        <img src="https://image.tmdb.org/t/p/w342/{{movie.poster_path}}">
-      </div-->
     </div>
     <div class="information">
         <mat-card-header>
@@ -80,8 +77,9 @@
         <mat-tab label="Production Companies">
           <mat-list role="list">
             <mat-list-item role="listitem" *ngFor="let companie of movie.production_companies">
-              <img *ngIf="companie.logo_path" src="https://image.tmdb.org/t/p/w92/{{companie.logo_path}}">
-              <div *ngIf="!companie.logo_path">{{companie.name}}</div>
+              <!--img *ngIf="companie.logo_path" src="https://image.tmdb.org/t/p/w92/{{companie.logo_path}}">
+              <div *ngIf="!companie.logo_path">{{companie.name}}</div-->
+                {{companie.name}}
             </mat-list-item>
           </mat-list>
         </mat-tab>

@@ -1,4 +1,4 @@
-import { Component, OnInit, SimpleChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MovieService } from '../../../services/movie.service';
@@ -36,7 +36,9 @@ export class MovieDetailComponent implements OnInit {
         this.movieService.getMovieDetail(id).subscribe(
           (data) => {
             this.movie= data;
-            this.backDropImage='https://image.tmdb.org/t/p/w1280'+ this.movie.backdrop_path;
+            if (this.movie.backdrop_path) {
+              this.backDropImage='https://image.tmdb.org/t/p/original'+ this.movie.backdrop_path;
+            }
           }
         );
 

@@ -6,33 +6,62 @@
     margin-right: 8px;
 }
 
-
-.movie-title{
-    color: white;
-    margin: 20px;
-}
-.movie-summary{
-    color: white;
-    margin: 20px;
-    text-align: justify;
-}
-
 .movies-grid{
     display: flex;
     flex-wrap: wrap;
     flex-basis: 0;
-    .poster{
-        margin: 15px;
-        display: block;
+}
+
+.poster{
+    position: relative;
+    margin: 15px;
+    display: block;
+    width: 300px;
+    height: 450px;
+    border-radius: 10px;
+    img {
+        object-fit: fill;
         width: 300px;
         height: 450px;
-        background-color: black;
         border-radius: 10px;
-        img {
-            width: 300px;
-            height: 450px;
-            border-radius: 10px;
+    }
+    .preview{
+        height: 100%;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        visibility: hidden;
+        .movie-title{
+            color: white;
+            margin: 20px;
         }
+        .movie-summary{
+            color: white;
+            margin: 20px;
+            text-align: justify;
+        }
+        .movie-genres{
+            display: flex;
+            flex-wrap: wrap;
+            color: white;
+            margin: 20px;
+            position: absolute;
+            //top:300px;
+            bottom: 0px;
+            span{
+                margin-top: 5px;
+            }
+        }
+    }
+}
+
+.poster:hover{
+    cursor: pointer;
+    img{
+        filter: brightness(10%);
+    }
+    .preview{
+        visibility: visible;
     }
 }
 
@@ -48,5 +77,8 @@
             width: 300px;
             height: 450px;
         }
+    }
+    mat-card:hover{
+        cursor: pointer;
     }
 }

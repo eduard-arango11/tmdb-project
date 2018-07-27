@@ -12,9 +12,9 @@ export class SearchService {
 
   constructor(private http: HttpClient) { }
 
-  searchMovie(term: string) {
+  searchMovie(term: string, page:number) {
     return this.http
-      .get(this.baseUrl + 'movie' +  this.apiKey + term)
+      .get(this.baseUrl + 'movie' +  this.apiKey + term + '&page=' + page)
       .pipe(
         map(
           (response: any) => {
@@ -28,7 +28,9 @@ export class SearchService {
                 popularity: item.popularity,
                 genre_ids: item.genre_ids,
                 overview: item.overview,
-                release_date: item.release_date
+                release_date: item.release_date,
+                total_pages: response.total_pages,
+                total_results: response.total_results
               }
             });
           }
@@ -36,9 +38,9 @@ export class SearchService {
       );
   }
 
-  searchPerson(term: string) {
+  searchPerson(term: string, page:number) {
     return this.http
-      .get(this.baseUrl + 'person'  +  this.apiKey + term)
+      .get(this.baseUrl + 'person'  +  this.apiKey + term + '&page=' + page)
       .pipe(
         map(
           (response: any) => {
@@ -48,7 +50,9 @@ export class SearchService {
                 name: item.name,
                 profile_path: item.profile_path,
                 known_for: item.known_for,
-                popularity: item.popularity
+                popularity: item.popularity,
+                total_pages: response.total_pages,
+                total_results: response.total_results
               }
             });
           }
