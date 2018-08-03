@@ -1,5 +1,5 @@
 <div class="images-tab" >
-    <div *ngFor="let video of movieVideos, let i=index" class="image-in-tab">
-        <iframe [src]="safeVideosUrls[i]" frameborder="0" width="500" height="350" ></iframe>
+    <div *ngFor="let video of movieVideos, let i=index" class="embed-container">
+        <iframe [src]="safeVideosUrls[i]" frameborder="0" allowfullscreen ></iframe>
     </div>
 </div>

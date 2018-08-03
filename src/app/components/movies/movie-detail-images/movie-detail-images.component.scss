@@ -5,6 +5,50 @@
     flex-wrap: wrap;
     
     .image-in-tab{
-        margin: 10px;
+        margin: 10px 10px 10px 10px;
+        position: relative;
+        cursor: pointer;
+
+        .dimensions{
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 20px;
+            width: 100%;
+            text-align: center;
+            color: white;
+            position: absolute;
+            top: 45%;
+            visibility: hidden;
+        }
+    }
+
+    .image-in-tab:hover{
+        .dimensions{
+            visibility: visible;
+        }
+        img{
+            filter: brightness(0.4);
+        }
+    }
+
+    #backdrop-img{
+        width: 300px;
+        height: 169px;
+        img{
+            object-fit: fill;
+            width: 300px;
+            height: 169px;
+        }
+    }
+
+    #poster-img{
+        width: 185px;
+        height: 274px;
+        display: block;
+        position: relative;
+        img{
+            object-fit: fill;
+            width: 185px;
+            height: 274px;
+        }
     }
 }

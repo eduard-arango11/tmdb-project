@@ -1,9 +1,7 @@
 .title{
     align-self: center;
-    //border: solid red;
     .movie-title{
         font-size: 230%;
-        //border: solid saddlebrown;
         text-align: center;
     }
     mat-chip-list{
@@ -12,15 +10,12 @@
 
         mat-chip:hover{
             cursor: pointer;
-            background-color: darkblue;
         }
     }
 }
 .details{
     display: flex;
     flex-direction: column;
-    //min-height: stretch;
-    //height: 800px;
 }
 
 .background-image {
@@ -36,35 +31,66 @@
   }
 
 .movie-overview{
-    padding-top: 20px;
-    font-size: 170%;
+    display: flex;
+    flex-direction: column;
+
+    .trailer-and-more{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        .production-tabs{
+            width: 400px;
+        }
+
+    }
+
+    .embed-container {
+        width: 400px;
+        position: relative;
+        padding-bottom: 30.25%;
+        height: 0;
+        overflow: hidden;
+    }
+    .embed-container iframe {
+        position: absolute;
+        top:0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
 }
 
 .main{
     display: flex;
     flex-direction: column;
     min-height: stretch;
-    //border: solid salmon;
     background-color: white;
 }
 
 .detail-content{
+    align-self: center;
     position: relative;
     margin-bottom: 15px;
     display: flex;
     flex-direction: row;
-    //border: solid green;
     flex-wrap: wrap;
     justify-content: center;
     .detail-left{
         display: flex;
         flex-direction: column;
-        //border: solid orange;
-        padding-right: 50px;
     }
     .information{
-        max-width: 1300px;;
-        //border: solid blue;
+        max-width: 70%;
+        padding: 0px 20px 20px 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        mat-card-header{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+        }
     }
     mat-list{
         display: flex; 
@@ -82,17 +108,6 @@
     display: flex;
     flex-direction: column;
     justify-content:center;
-}
-
-.images-tab{
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-}
-
-.image-in-tab{
-    margin: 10px;
 }
 
 .fix_icon{
@@ -114,7 +129,6 @@
 }
 
 .poster{
-    display: block;
     width: 342px;
     height: 513px;
     border-radius: 10px;
@@ -122,15 +136,5 @@
         width: 342px;
         height: 513px;
         border-radius: 10px;
-    }
-}
-
-.trailer-and-more{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    .production-tabs{
-        margin-left: 60px;
-        width: 600px;
     }
 }

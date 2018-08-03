@@ -6,23 +6,23 @@
       </mat-panel-title>
     </mat-expansion-panel-header>
     <div class="images-tab" >
-        <div *ngFor="let image of movieBackdropsImages" class="image-in-tab">
-          <a target="_blank" href="https://image.tmdb.org/t/p/original{{image.file_path}}">
-            <img src="https://image.tmdb.org/t/p/w300/{{image.file_path}}">
-          </a>
-        </div>
+        <a *ngFor="let image of movieBackdropsImages"  target="_blank" href="https://image.tmdb.org/t/p/original{{image.file_path}}" class="image-in-tab" id="backdrop-img">
+          <img src="https://image.tmdb.org/t/p/w300/{{image.file_path}}">
+          <div class="dimensions">{{image.width}} x {{image.height}}</div>
+        </a>
     </div>
   </mat-expansion-panel>
-  <mat-expansion-panel>
+  <mat-expansion-panel *ngIf="moviePostersImages && moviePostersImages.length !== 0">
     <mat-expansion-panel-header>
       <mat-panel-title>
         Posters
       </mat-panel-title>
     </mat-expansion-panel-header>
     <div class="images-tab" >
-        <div *ngFor="let image of moviePostersImages" class="image-in-tab">
+        <a *ngFor="let image of moviePostersImages" target="_blank" href="https://image.tmdb.org/t/p/original{{image.file_path}}" class="image-in-tab" id="poster-img">
           <img src="https://image.tmdb.org/t/p/w185/{{image.file_path}}">
-        </div>
+          <div class="dimensions">{{image.width}} x {{image.height}}</div>
+        </a>
     </div>
   </mat-expansion-panel>
 </mat-accordion>

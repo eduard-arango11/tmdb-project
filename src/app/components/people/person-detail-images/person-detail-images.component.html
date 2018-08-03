@@ -2,6 +2,7 @@
     <div *ngFor="let image of personImages" class="image">
       <a target="_blank" href="https://image.tmdb.org/t/p/original{{image.file_path}}">
         <img src="https://image.tmdb.org/t/p/w300/{{image.file_path}}">
+        <div class="dimensions">{{image.width}} x {{image.height}}</div>
       </a>
     </div>
 </div>

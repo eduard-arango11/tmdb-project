@@ -45,7 +45,7 @@
                 <div>
                   <mat-icon>update</mat-icon>
                 </div>
-                <div>Runtime: {{movie.runtime}} min</div>
+                <div>Runtime: {{convertDuration(movie.runtime)}}</div>
               </li>
               <li class="fix_icon" *ngIf="movie.revenue">
                 <div>
@@ -63,33 +63,34 @@
           </mat-card-subtitle>
       </mat-card-header>
       <mat-divider [inset]="true"></mat-divider>
-      <div *ngIf="movie.overview">
-          <mat-card-title class="movie-overview">Overview</mat-card-title>
+      <div *ngIf="movie.overview" class="movie-overview">
+          <mat-card-title>Overview</mat-card-title>
           <p align="justify">
             {{movie.overview}}
           </p>
+          <div class="trailer-and-more">
+            <div *ngIf="safeURLTrailer" class="embed-container">
+              <iframe [src]="safeURLTrailer" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <mat-tab-group mat-stretch-tabs="always" class="production-tabs" *ngIf="movie.production_countries.length !== 0 || movie.production_companies.length !== 0">
+              <mat-tab label="Production Countries" *ngIf="movie.production_countries.length !== 0">
+                <mat-list role="list">
+                  <mat-list-item role="listitem" *ngFor="let country of movie.production_countries">{{country.name}} </mat-list-item>
+                </mat-list>
+              </mat-tab>
+              <mat-tab label="Production Companies" *ngIf="movie.production_companies.length !== 0">
+                <mat-list role="list">
+                  <mat-list-item role="listitem" *ngFor="let companie of movie.production_companies">
+                    <!--img *ngIf="companie.logo_path" src="https://image.tmdb.org/t/p/w92/{{companie.logo_path}}"-->
+                    <!--div *ngIf="!companie.logo_path">{{companie.name}}</div-->
+                    <div>{{companie.name}}</div>
+                  </mat-list-item>
+                </mat-list>
+              </mat-tab>
+            </mat-tab-group>
+          </div>
       </div>
-      <div class="trailer-and-more">
-        <div *ngIf="safeURLTrailer" class="image-in-tab">
-          <iframe [src]="safeURLTrailer" frameborder="0" width="600" height="400" ></iframe>
-        </div>
-        <mat-tab-group mat-stretch-tabs="always" class="production-tabs">
-        <mat-tab label="Production Companies">
-          <mat-list role="list">
-            <mat-list-item role="listitem" *ngFor="let companie of movie.production_companies">
-              <!--img *ngIf="companie.logo_path" src="https://image.tmdb.org/t/p/w92/{{companie.logo_path}}">
-              <div *ngIf="!companie.logo_path">{{companie.name}}</div-->
-                {{companie.name}}
-            </mat-list-item>
-          </mat-list>
-        </mat-tab>
-        <mat-tab label="Production Countries">
-          <mat-list role="list">
-            <mat-list-item role="listitem" *ngFor="let country of movie.production_countries">{{country.name}} </mat-list-item>
-          </mat-list>
-        </mat-tab>
-      </mat-tab-group>
-      </div>
+      
     </div>
   </div>
   </mat-card>

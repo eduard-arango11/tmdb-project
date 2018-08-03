@@ -66,6 +66,20 @@ export class MovieDetailComponent implements OnInit {
     }
   }
 
+  /* This function convert the runtime (only minutes) to duration format (hours and minutes) */
+  convertDuration(runtime:number):string{
+    let duration:string;
+    if(runtime>60){
+      duration= Math.floor(runtime / 60) + " h";
+      if((runtime % 60) !== 0 ){
+        duration += " "+ (runtime % 60) + " min";
+      }
+    }else{
+      duration= runtime + " min";
+    }
+    return duration;
+  }
+
   ListenChild(event){
     this.movieId = event;
   }

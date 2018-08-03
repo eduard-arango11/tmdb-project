@@ -219,7 +219,7 @@ export class MovieService {
 
   getMovieImagesPosters(idMovie:number){
     return this.http
-      .get(this.baseUrl + idMovie + "/images" + this.apiKey)
+      .get(this.baseUrl + idMovie + "/images" + this.apiKey + "&include_image_language=en")
       .pipe(
         map(
           (response: any) => {
