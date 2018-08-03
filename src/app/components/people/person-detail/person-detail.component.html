@@ -1,4 +1,5 @@
 <mat-card *ngIf="person" class="main">
+  <h1> {{person.name}} </h1>
   <div class="detail-content">
       <div *ngIf = 'person.profile_path !== null; then trueCase else falseCase'></div>
       <ng-template #trueCase>
@@ -11,12 +12,12 @@
             <img src="assets/noimg.png" >
           </div>
       </ng-template>
-    <div class="information">
-      <mat-card-header>
-        <mat-card-title> {{person.name}} </mat-card-title>
-        <mat-card-subtitle *ngIf ='person.birthday'> Born: {{ person.birthday | date}} ({{ person.place_of_birth }})</mat-card-subtitle>
-        <mat-card-subtitle *ngIf ='person.deathday'> Died: {{person.deathday | date}}</mat-card-subtitle>
-      </mat-card-header>
+    <div class="information" *ngIf ='person.biography || person.birthday || person.place_of_birth'>
+      <div class="person-data">
+        <span class="fix_icon" *ngIf ='person.birthday'> <mat-icon>cake</mat-icon> Birth: {{ person.birthday | date}} <span *ngIf ='!person.deathday'> &nbsp; (age {{calculateAge()}})</span></span>
+        <span class="fix_icon" *ngIf ='person.place_of_birth'> <mat-icon>room</mat-icon> From: {{ person.place_of_birth }}</span>
+        <span class="fix_icon" *ngIf ='person.deathday'> <mat-icon>insert_invitation</mat-icon> Death: {{person.deathday | date}} (age {{calculateAge()}})</span>
+      </div>
       <mat-divider [inset]="true"></mat-divider>
       <h2 *ngIf ='person.biography'>Biography</h2>
       <p align="justify">
